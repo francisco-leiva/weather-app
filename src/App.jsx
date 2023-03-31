@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Header from './components/Header';
+import HourlyForecast from './components/HourlyForcast';
 
 function App() {
   const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
@@ -22,13 +23,15 @@ function App() {
   }, []);
 
   return (
-    <>
+    <div className='bg-violet'>
       <Header
         currentWeather={currentWeather}
         location={location}
         forecast={forecast[0]}
       />
-    </>
+
+      <HourlyForecast forecast={forecast} />
+    </div>
   );
 }
 
