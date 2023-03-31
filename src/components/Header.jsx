@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types';
-
 const Header = ({ currentWeather, location, forecast }) => {
   return (
     <header className='flex items-center justify-around bg-violet'>
@@ -26,12 +24,6 @@ const Header = ({ currentWeather, location, forecast }) => {
       </picture>
     </header>
   );
-};
-
-Header.propTypes = {
-  currentWeather: PropTypes.object,
-  location: PropTypes.object,
-  forecast: PropTypes.object,
 };
 
 export default Header;
