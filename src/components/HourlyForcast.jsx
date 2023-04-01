@@ -1,18 +1,21 @@
 const HourlyForcast = ({ forecast }) => {
+  const { forecastday } = forecast;
+  const todaysHours = forecastday[0]?.hour;
+  const tomorrowsHours = forecastday[1]?.hour;
   const time = new Date().getHours();
 
   // Format hour.time = '31-3-2023 16:00'
-  const filterNextHoursOfDay = forecast[0]?.hour.filter(
+  const filterNextHoursOfDay = todaysHours.filter(
     (hour) => hour?.time.split(' ')[1] >= `${time}:00`
   );
 
-  const filterNextHoursNextDay = forecast[1]?.hour.filter(
+  const filterNextHoursNextDay = tomorrowsHours.filter(
     (hour) => hour?.time.split(' ')[1] < `${time}:00`
   );
 
   return (
     <section className='mx-2 my-4 flex gap-5 overflow-scroll rounded-2xl bg-light-violet p-4'>
-      {filterNextHoursOfDay?.map((hour, index) => {
+      {filterNextHoursOfDay.map((hour, index) => {
         return (
           <div key={index} className='flex flex-col items-center text-white'>
             <h4>{hour?.time.split(' ')[1]}</h4>
@@ -33,7 +36,7 @@ const HourlyForcast = ({ forecast }) => {
         );
       })}
 
-      {filterNextHoursNextDay?.map((hour, index) => {
+      {filterNextHoursNextDay.map((hour, index) => {
         return (
           <div key={index} className='flex flex-col items-center text-white'>
             <h4>{hour?.time.split(' ')[1]}</h4>

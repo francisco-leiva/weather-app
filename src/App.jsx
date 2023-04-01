@@ -8,23 +8,20 @@ import DailyForecast from './components/DailyForecast';
 
 function App() {
   const apiURL = `https://api.weatherapi.com/v1/forecast.json?key=27108248a8404184a5222207233103&q=Rosario&days=7&aqi=no&alerts=no`;
-  const [currentWeather, setCurrentWeather] = useState([]);
-  const [location, setLocation] = useState([]);
-  const [forecast, setForecast] = useState([]);
+  const [weather, setWeather] = useState([]);
+  const { current, location, forecast } = weather;
 
   useEffect(() => {
     const getData = async () => {
       const response = await axios.get(apiURL);
 
-      setCurrentWeather(response.data.current);
-      setLocation(response.data.location);
-      setForecast(response.data.forecast.forecastday);
+      setWeather(response.data);
     };
 
     getData();
   }, []);
 
-  return currentWeather.length === 0 ? (
+  return weather.length === 0 ? (
     <Backdrop
       sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
       open={true}
@@ -34,9 +31,9 @@ function App() {
   ) : (
     <div className='bg-violet'>
       <Header
-        currentWeather={currentWeather}
+        currentWeather={current}
         location={location}
-        forecast={forecast[0]}
+        forecast={forecast}
       />
 
       <HourlyForecast forecast={forecast} />
