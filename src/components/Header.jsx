@@ -8,7 +8,7 @@ const Header = ({ currentWeather, location, forecast }) => {
         <p>
           {`${Math.round(forecast?.day?.maxtemp_c)}º / ${Math.round(
             forecast?.day?.mintemp_c
-          )}`}
+          )}º`}
 
           {` Feels like ${Math.round(currentWeather?.feelslike_c)}º`}
         </p>
@@ -18,8 +18,8 @@ const Header = ({ currentWeather, location, forecast }) => {
         <img
           src={currentWeather?.condition?.icon}
           alt={currentWeather?.condition?.text}
-          width='86rem'
-          height='86rem'
+          width={'86rem'}
+          height={'86rem'}
         />
       </picture>
     </header>

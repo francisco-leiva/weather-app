@@ -14,15 +14,15 @@ const HourlyForcast = ({ forecast }) => {
     <section className='mx-2 my-4 flex gap-5 overflow-scroll rounded-2xl bg-light-violet p-4'>
       {filterNextHoursOfDay?.map((hour, index) => {
         return (
-          <div key={index} className='flex flex-col items-center'>
+          <div key={index} className='flex flex-col items-center text-white'>
             <h4>{hour?.time.split(' ')[1]}</h4>
 
             <picture>
               <img
                 src={hour?.condition?.icon}
                 alt={hour?.condition?.text}
-                width='40rem'
-                height='40rem'
+                width={'40rem'}
+                height={'40rem'}
               />
             </picture>
 
@@ -35,15 +35,15 @@ const HourlyForcast = ({ forecast }) => {
 
       {filterNextHoursNextDay?.map((hour, index) => {
         return (
-          <div key={index} className='flex flex-col items-center'>
+          <div key={index} className='flex flex-col items-center text-white'>
             <h4>{hour?.time.split(' ')[1]}</h4>
 
             <picture>
               <img
                 src={hour?.condition?.icon}
                 alt={hour?.condition?.text}
-                width='40rem'
-                height='40rem'
+                width={'40rem'}
+                height={'40rem'}
               />
             </picture>
 
