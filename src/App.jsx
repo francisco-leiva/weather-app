@@ -4,6 +4,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import HourlyForecast from './components/HourlyForcast';
+import DailyForecast from './components/DailyForecast';
 
 function App() {
   const apiURL = `https://api.weatherapi.com/v1/forecast.json?key=27108248a8404184a5222207233103&q=Rosario&days=7&aqi=no&alerts=no`;
@@ -39,6 +40,8 @@ function App() {
       />
 
       <HourlyForecast forecast={forecast} />
+
+      <DailyForecast forecast={forecast} />
     </div>
   );
 }
