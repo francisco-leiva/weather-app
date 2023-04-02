@@ -14,10 +14,13 @@ const HourlyForecast = ({ forecast }) => {
   );
 
   return (
-    <section className='mx-2 my-4 flex gap-5 overflow-scroll rounded-2xl bg-light-violet p-4'>
+    <section className='mx-2 my-4 flex gap-3 overflow-scroll rounded-2xl bg-light-violet p-4'>
       {filterNextHoursOfDay.map((hour, index) => {
         return (
-          <div key={index} className='flex flex-col items-center text-white'>
+          <div
+            key={index}
+            className='mx-2 flex flex-col items-center justify-between font-dosis text-white'
+          >
             <h4>{hour?.time.split(' ')[1]}</h4>
 
             <picture>
@@ -38,7 +41,10 @@ const HourlyForecast = ({ forecast }) => {
 
       {filterNextHoursNextDay.map((hour, index) => {
         return (
-          <div key={index} className='flex flex-col items-center text-white'>
+          <div
+            key={index}
+            className='mx-2 flex flex-col items-center justify-between font-dosis text-white'
+          >
             <h4>{hour?.time.split(' ')[1]}</h4>
 
             <picture>

@@ -14,13 +14,13 @@ const DailyForecast = ({ forecast }) => {
   ];
 
   return (
-    <section className='mx-2 my-4 flex flex-col gap-3 rounded-2xl bg-light-violet p-4'>
+    <section className='mx-2 my-4 flex flex-col gap-3 rounded-2xl bg-light-violet p-4 font-dosis'>
       {forecastday.map((day, index) => {
         // Format day.date = '2023-04-01'
-        const date = new Date(day.date).getDay();
+        const date = new Date(day.date).getUTCDay();
 
         return (
-          <div key={index} className='flex items-center gap-4 text-white'>
+          <div key={index} className='flex items-center gap-4 text-white text-xl'>
             <h4 className='w-40'>{weekdays[date]}</h4>
 
             <span className='flex items-center'>
