@@ -3,7 +3,7 @@ import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useState, useEffect } from 'react';
 import Header from './components/Header';
-import HourlyForecast from './components/HourlyForcast';
+import HourlyForecast from './components/HourlyForecast';
 import DailyForecast from './components/DailyForecast';
 
 function App() {

@@ -1,4 +1,4 @@
-const HourlyForcast = ({ forecast }) => {
+const HourlyForecast = ({ forecast }) => {
   const { forecastday } = forecast;
   const todaysHours = forecastday[0]?.hour;
   const tomorrowsHours = forecastday[1]?.hour;
@@ -60,4 +60,4 @@ const HourlyForcast = ({ forecast }) => {
   );
 };
 
-export default HourlyForcast;
+export default HourlyForecast;
