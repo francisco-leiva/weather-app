@@ -7,6 +7,9 @@ export default {
         violet: '#8c8fde',
         'light-violet': '#b8b5ff',
       },
+      fontFamily: {
+        dosis: ['Dosis', 'sans-serif'],
+      },
     },
   },
   plugins: [],
