@@ -5,7 +5,7 @@ const Header = ({ currentWeather, location, forecast }) => {
   const todaysForecast = forecastday[0]?.day;
 
   return (
-    <header className='flex h-40 justify-around bg-violet'>
+    <header className='flex h-40 justify-around'>
       <div className='flex flex-col justify-end font-dosis text-white'>
         <h2 className='text-7xl'>{currentWeather?.temp_c}º</h2>
 

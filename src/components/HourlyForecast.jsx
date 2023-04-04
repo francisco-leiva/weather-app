@@ -1,4 +1,9 @@
+import { useContext } from 'react';
+import { ThemeContext } from '../context/ThemeContext';
+
 const HourlyForecast = ({ forecast }) => {
+  const { sectionsClassName } = useContext(ThemeContext);
+
   const { forecastday } = forecast;
   const todaysHours = forecastday[0]?.hour;
   const tomorrowsHours = forecastday[1]?.hour;
@@ -14,21 +19,23 @@ const HourlyForecast = ({ forecast }) => {
   );
 
   return (
-    <section className='mx-2 my-4 flex gap-3 overflow-scroll rounded-2xl bg-light-violet p-4'>
+    <section
+      className={`mx-2 my-4 flex gap-4 overflow-scroll rounded-2xl p-4 ${sectionsClassName}`}
+    >
       {filterNextHoursOfDay.map((hour, index) => {
         return (
           <div
             key={index}
-            className='mx-2 flex flex-col items-center justify-between font-dosis text-white'
+            className='flex flex-col items-center justify-between font-dosis text-white'
           >
             <h4>{hour?.time.split(' ')[1]}</h4>
 
-            <picture>
+            <picture className='h-12 w-12'>
               <img
                 src={hour?.condition?.icon}
                 alt={hour?.condition?.text}
-                width={'40rem'}
-                height={'40rem'}
+                width={'100%'}
+                height={'100%'}
               />
             </picture>
 
@@ -43,16 +50,16 @@ const HourlyForecast = ({ forecast }) => {
         return (
           <div
             key={index}
-            className='mx-2 flex flex-col items-center justify-between font-dosis text-white'
+            className='flex flex-col items-center justify-between font-dosis text-white'
           >
             <h4>{hour?.time.split(' ')[1]}</h4>
 
-            <picture>
+            <picture className='h-12 w-12'>
               <img
                 src={hour?.condition?.icon}
                 alt={hour?.condition?.text}
-                width={'40rem'}
-                height={'40rem'}
+                width={'100%'}
+                height={'100%'}
               />
             </picture>
 
