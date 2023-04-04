@@ -2,3 +2,35 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.sunnyDay {
+  background-color: #7cb2f2;
+}
+
+.sunnyDaySections {
+  background-color: #90bef0;
+}
+
+.cloudyDay {
+  background-color: #8c8fde;
+}
+
+.cloudyDaySections {
+  background-color: #b8b5ff;
+}
+
+.rainyDay {
+  background-color: #58afc2;
+}
+
+.rainyDaySections {
+  background-color: #87b7c5;
+}
+
+.nightTheme {
+  background-color: #505366;
+}
+
+.nightThemeSections {
+  background-color: #6c6e7b;
+}
