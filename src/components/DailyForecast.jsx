@@ -18,7 +18,7 @@ const DailyForecast = ({ forecast }) => {
 
   return (
     <section
-      className={`mx-2 my-4 flex flex-col gap-3 rounded-2xl p-4 font-dosis ${sectionsClassName}`}
+      className={`mx-2 my-4 flex flex-col gap-3 rounded-2xl p-4 font-dosis text-lg text-white ${sectionsClassName}`}
     >
       {forecastday.map((day, index) => {
         // Format day.date = '2023-04-01'
@@ -27,7 +27,7 @@ const DailyForecast = ({ forecast }) => {
         return (
           <div
             key={index}
-            className='flex items-center justify-between gap-4 text-xl text-white'
+            className='flex items-center justify-between gap-4 text-xl'
           >
             <h4 className='w-40'>{weekdays[date]}</h4>
 

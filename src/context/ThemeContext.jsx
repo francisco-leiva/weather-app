@@ -13,7 +13,7 @@ export const ThemeContextProvider = ({ children }) => {
 
   const dayCondition = (conditionCode, isItDay) => {
     // codes for time conditions
-    const cloudyDayCode = [1003, 1006, 1009, 1030, 1135];
+    const cloudyDayCode = [1006, 1009, 1030, 1135];
     const rainyDayCode = [
       1063, 1072, 1087, 1150, 1153, 1168, 1171, 1180, 1183, 1186, 1189, 1192,
       1195, 1198, 1201, 1237, 1240, 1243, 1246, 1258, 1261, 1264, 1273, 1276,

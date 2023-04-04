@@ -20,15 +20,15 @@ const HourlyForecast = ({ forecast }) => {
 
   return (
     <section
-      className={`mx-2 my-4 flex gap-4 overflow-scroll rounded-2xl p-4 ${sectionsClassName}`}
+      className={`mx-2 my-4 flex gap-4 overflow-scroll rounded-2xl p-4 font-dosis text-lg text-white ${sectionsClassName}`}
     >
       {filterNextHoursOfDay.map((hour, index) => {
         return (
           <div
             key={index}
-            className='flex flex-col items-center justify-between font-dosis text-white'
+            className='flex flex-col items-center justify-between'
           >
-            <h4>{hour?.time.split(' ')[1]}</h4>
+            <h3>{hour?.time.split(' ')[1]}</h3>
 
             <picture className='h-12 w-12'>
               <img
@@ -50,9 +50,9 @@ const HourlyForecast = ({ forecast }) => {
         return (
           <div
             key={index}
-            className='flex flex-col items-center justify-between font-dosis text-white'
+            className='flex flex-col items-center justify-between'
           >
-            <h4>{hour?.time.split(' ')[1]}</h4>
+            <h3>{hour?.time.split(' ')[1]}</h3>
 
             <picture className='h-12 w-12'>
               <img
