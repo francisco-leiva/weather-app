@@ -5,6 +5,8 @@ import { useState, useEffect, useContext } from 'react';
 import Header from './components/Header';
 import HourlyForecast from './components/HourlyForecast';
 import DailyForecast from './components/DailyForecast';
+import SunriseAndSunset from './components/SunriseAndSunset';
+import OtherMeteorologicalData from './components/OtherMeteorologicalData';
 import { ThemeContext } from './context/ThemeContext';
 
 function App() {
@@ -36,7 +38,7 @@ function App() {
       <CircularProgress color='inherit' />
     </Backdrop>
   ) : (
-    <div className={appClassName}>
+    <main className={appClassName}>
       <Header
         currentWeather={current}
         location={location}
@@ -46,7 +48,11 @@ function App() {
       <HourlyForecast forecast={forecast} />
 
       <DailyForecast forecast={forecast} />
-    </div>
+
+      <SunriseAndSunset forecast={forecast} />
+
+      <OtherMeteorologicalData currentWeather={current} />
+    </main>
   );
 }
 
