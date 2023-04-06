@@ -4,6 +4,7 @@ const Header = ({ currentWeather, location, forecast }) => {
   const { forecastday } = forecast;
   const todaysForecast = forecastday[0]?.day;
 
+  const currentTemp = `${Math.round(currentWeather?.temp_c)}º`;
   const maxTemp = Math.round(todaysForecast?.maxtemp_c);
   const minTemp = Math.round(todaysForecast?.mintemp_c);
   const feelsLikeTemp = Math.round(currentWeather?.feelslike_c);
@@ -13,7 +14,7 @@ const Header = ({ currentWeather, location, forecast }) => {
   return (
     <header className='flex h-44 justify-around'>
       <div className='flex flex-col justify-end font-dosis text-white'>
-        <h2 className='text-7xl'>{currentWeather?.temp_c}º</h2>
+        <h2 className='text-7xl'>{currentTemp}</h2>
 
         <span className='mt-2 flex items-center gap-0.5 text-3xl'>
           {location?.name}
