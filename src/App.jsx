@@ -7,6 +7,7 @@ import HourlyForecast from './components/HourlyForecast';
 import DailyForecast from './components/DailyForecast';
 import SunriseAndSunset from './components/SunriseAndSunset';
 import OtherMeteorologicalData from './components/OtherMeteorologicalData';
+import Footer from './components/Footer';
 import { ThemeContext } from './context/ThemeContext';
 
 function App() {
@@ -52,6 +53,8 @@ function App() {
       <SunriseAndSunset forecast={forecast} />
 
       <OtherMeteorologicalData currentWeather={current} />
+
+      <Footer currentWeather={current} />
     </main>
   );
 }
