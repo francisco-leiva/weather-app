@@ -23,17 +23,23 @@ const DailyForecast = ({ forecast }) => {
       {forecastday.map((day, index) => {
         // Format day.date = '2023-04-01'
         const date = new Date(day.date).getUTCDay();
+        const dayName = weekdays[date];
+
+        const chanceOfRain = `${day?.day?.daily_chance_of_rain}%`;
+        const maxTemp = `${Math.round(day?.day?.maxtemp_c)}º`;
+        const minTemp = `${Math.round(day?.day?.mintemp_c)}º`;
 
         return (
           <div
             key={index}
             className='flex items-center justify-between gap-4 text-xl'
           >
-            <h4 className='w-40'>{weekdays[date]}</h4>
+            <h4 className='w-32'>{dayName}</h4>
 
-            <span className='flex items-center text-base text-[#e9ecff]'>
+            <span className='flex w-11 items-center text-base text-[#e9ecff]'>
               <DropOfWater />
-              {day?.day?.daily_chance_of_rain}%
+
+              {chanceOfRain}
             </span>
 
             <picture className='h-10 w-10'>
@@ -45,9 +51,9 @@ const DailyForecast = ({ forecast }) => {
               />
             </picture>
 
-            <span>{Math.round(day?.day?.maxtemp_c)}º</span>
+            <span>{maxTemp}</span>
 
-            <span>{Math.round(day?.day?.mintemp_c)}º</span>
+            <span>{minTemp}</span>
           </div>
         );
       })}
