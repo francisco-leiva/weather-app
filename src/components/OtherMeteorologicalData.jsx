@@ -42,7 +42,7 @@ const OtherMeteorologicalData = ({ currentWeather }) => {
 
   return (
     <section
-      className={`mx-2 my-4 flex items-center justify-between rounded-2xl p-4 font-dosis text-xl text-white ${sectionsClassName}`}
+      className={`mx-2 my-4 flex items-center justify-between rounded-2xl p-4 font-dosis text-xl text-white sm:mt-0 sm:w-[36rem] sm:justify-around ${sectionsClassName}`}
     >
       <div className='flex flex-col items-center gap-1'>
         <picture>

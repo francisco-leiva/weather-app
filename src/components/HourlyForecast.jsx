@@ -20,15 +20,19 @@ const HourlyForecast = ({ forecast }) => {
 
   return (
     <section
-      className={`mx-2 my-4 flex gap-4 overflow-x-scroll rounded-2xl p-4 font-dosis text-lg text-white ${sectionsClassName}`}
+      className={`mx-2 my-4 flex gap-4 overflow-x-scroll rounded-2xl p-4 font-dosis text-lg text-white sm:max-w-xl sm:text-2xl ${sectionsClassName}`}
     >
       {filterNextHoursOfDay.map((hour, index) => {
+        const nextHours = hour?.time.split(' ')[1];
+        const nextHoursTemp = Math.round(hour?.temp_c);
+        const nextHorsChanceOfRain = hour?.chance_of_rain;
+
         return (
           <div
             key={index}
             className='flex flex-col items-center justify-between'
           >
-            <h3>{hour?.time.split(' ')[1]}</h3>
+            <h3>{nextHours}</h3>
 
             <picture className='h-12 w-12'>
               <img
@@ -39,20 +43,24 @@ const HourlyForecast = ({ forecast }) => {
               />
             </picture>
 
-            <h4>{`${Math.round(hour?.temp_c)}º`}</h4>
+            <h4>{nextHoursTemp}º</h4>
 
-            <span>{`${hour?.chance_of_rain}%`}</span>
+            <span>{nextHorsChanceOfRain}%</span>
           </div>
         );
       })}
 
       {filterNextHoursNextDay.map((hour, index) => {
+        const nextHours = hour?.time.split(' ')[1];
+        const nextHoursTemp = Math.round(hour?.temp_c);
+        const nextHorsChanceOfRain = hour?.chance_of_rain;
+
         return (
           <div
             key={index}
             className='flex flex-col items-center justify-between'
           >
-            <h3>{hour?.time.split(' ')[1]}</h3>
+            <h3>{nextHours}</h3>
 
             <picture className='h-12 w-12'>
               <img
@@ -63,9 +71,9 @@ const HourlyForecast = ({ forecast }) => {
               />
             </picture>
 
-            <h4>{`${Math.round(hour?.temp_c)}º`}</h4>
+            <h4>{nextHoursTemp}º</h4>
 
-            <span>{`${hour?.chance_of_rain}%`}</span>
+            <span>{nextHorsChanceOfRain}%</span>
           </div>
         );
       })}

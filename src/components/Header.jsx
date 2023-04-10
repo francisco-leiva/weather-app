@@ -12,7 +12,7 @@ const Header = ({ currentWeather, location, forecast }) => {
   const temp = `${maxTemp}º / ${minTemp}º Feels like ${feelsLikeTemp}º`;
 
   return (
-    <header className='flex h-44 justify-around'>
+    <header className='flex h-44 justify-around sm:w-[36rem]'>
       <div className='flex flex-col justify-end font-dosis text-white'>
         <h2 className='text-7xl'>{currentTemp}</h2>
 
@@ -21,15 +21,15 @@ const Header = ({ currentWeather, location, forecast }) => {
           <MapPin />
         </span>
 
-        <p className='mt-2 text-lg'>{temp}</p>
+        <p className='mt-2 text-lg sm:text-xl'>{temp}</p>
       </div>
 
       <picture className='flex items-center'>
         <img
           src={currentWeather?.condition?.icon}
           alt={currentWeather?.condition?.text}
-          width={'86rem'}
-          height={'86rem'}
+          width={'92rem'}
+          height={'92rem'}
         />
       </picture>
     </header>

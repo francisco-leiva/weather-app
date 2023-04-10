@@ -18,7 +18,7 @@ const DailyForecast = ({ forecast }) => {
 
   return (
     <section
-      className={`mx-2 my-4 flex flex-col gap-3 rounded-2xl p-4 font-dosis text-lg text-white ${sectionsClassName}`}
+      className={`mx-2 my-4 flex flex-col gap-3 rounded-2xl p-4 font-dosis text-xl text-white sm:my-0 sm:w-[36rem] sm:text-2xl ${sectionsClassName}`}
     >
       {forecastday.map((day, index) => {
         // Format day.date = '2023-04-01'
@@ -30,13 +30,10 @@ const DailyForecast = ({ forecast }) => {
         const minTemp = `${Math.round(day?.day?.mintemp_c)}º`;
 
         return (
-          <div
-            key={index}
-            className='flex items-center justify-between gap-4 text-xl'
-          >
+          <div key={index} className='flex items-center justify-between gap-4'>
             <h4 className='w-32'>{dayName}</h4>
 
-            <span className='flex w-11 items-center text-base text-[#e9ecff]'>
+            <span className='flex w-11 items-center text-base text-[#e9ecff] sm:text-lg'>
               <DropOfWater />
 
               {chanceOfRain}
