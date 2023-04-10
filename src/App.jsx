@@ -11,15 +11,23 @@ import Footer from './components/Footer';
 import { ThemeContext } from './context/ThemeContext';
 
 function App() {
-  const [apiURL, setApiURL] = useState(
-    'https://api.weatherapi.com/v1/forecast.json?key=27108248a8404184a5222207233103&q=Rosario&days=7&aqi=no&alerts=no'
-  );
+  const [apiURL, setApiURL] = useState(null);
   const { appClassName, dayCondition } = useContext(ThemeContext);
   const [weather, setWeather] = useState([]);
   const { current, location, forecast } = weather;
 
   useEffect(() => {
-    const getData = async () => {
+    getLocation();
+  }, []);
+
+  useEffect(() => {
+    if (apiURL) {
+      getData();
+    }
+  }, [apiURL]);
+
+  const getData = async () => {
+    try {
       const response = await axios.get(apiURL);
       const data = await response.data;
 
@@ -31,30 +39,23 @@ function App() {
       setWeather(data);
 
       dayCondition(conditionCode, isDay);
-    };
-
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (location) => {
-          const { coords } = location;
-          const latitude = coords.latitude;
-          const longitude = coords.longitude;
-          const queryParameter = latitude + ',' + longitude;
-
-          setApiURL(
-            `https://api.weatherapi.com/v1/forecast.json?key=27108248a8404184a5222207233103&q=${queryParameter}&days=7&aqi=no&alerts=no`
-          );
-        },
-        (err) => {
-          console.log(err);
-        }
-      );
-
-      getData();
-    } else {
-      getData();
+    } catch (err) {
+      console.log(err);
     }
-  }, [apiURL]);
+  };
+
+  const getLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((location) => {
+        const { latitude, longitude } = location.coords;
+        const queryParameter = latitude + ',' + longitude;
+
+        setApiURL(
+          `https://api.weatherapi.com/v1/forecast.json?key=27108248a8404184a5222207233103&q=${queryParameter}&days=7&aqi=no&alerts=no`
+        );
+      });
+    }
+  };
 
   return weather.length === 0 ? (
     <Backdrop
@@ -64,7 +65,7 @@ function App() {
       <CircularProgress color='inherit' />
     </Backdrop>
   ) : (
-    <main className={appClassName}>
+    <main className={`sm:flex sm:flex-col sm:items-center ${appClassName}`}>
       <Header
         currentWeather={current}
         location={location}
