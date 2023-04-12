@@ -18,9 +18,7 @@ function App() {
 
   useEffect(() => {
     getLocation();
-  }, []);
 
-  useEffect(() => {
     if (apiURL) {
       getData();
     }

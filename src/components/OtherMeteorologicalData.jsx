@@ -42,14 +42,14 @@ const OtherMeteorologicalData = ({ currentWeather }) => {
 
   return (
     <section
-      className={`mx-2 my-4 flex items-center justify-between rounded-2xl p-4 font-dosis text-xl text-white sm:mt-0 sm:w-[36rem] sm:justify-around ${sectionsClassName}`}
+      className={`mx-2 my-4 flex items-center justify-between rounded-2xl p-4 font-dosis text-xl text-white sm:mt-0 sm:w-[36rem] sm:justify-around md:w-[46rem] ${sectionsClassName}`}
     >
       <div className='flex flex-col items-center gap-1'>
         <picture>
           <img src={UVIndexIcon} alt='UV index' />
         </picture>
 
-        <h4>UV Index</h4>
+        <h4 className='font-medium'>UV Index</h4>
 
         <p>{UVIndex}</p>
       </div>
@@ -59,7 +59,7 @@ const OtherMeteorologicalData = ({ currentWeather }) => {
           <img src={HumidityIcon} alt='Humidity' />
         </picture>
 
-        <h4>Humidity</h4>
+        <h4 className='font-medium'>Humidity</h4>
 
         <p>{humidity}%</p>
       </div>
@@ -69,7 +69,7 @@ const OtherMeteorologicalData = ({ currentWeather }) => {
           <img src={WindIcon} alt='Wind' />
         </picture>
 
-        <h4>Wind</h4>
+        <h4 className='font-medium'>Wind</h4>
 
         <p>{wind}</p>
       </div>

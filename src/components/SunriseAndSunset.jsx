@@ -22,24 +22,24 @@ const SunriseAndSunset = ({ forecast }) => {
 
   return (
     <section
-      className={`mx-2 my-4 flex items-center gap-3 rounded-2xl p-4 font-dosis text-2xl text-white sm:max-w-xl ${sectionsClassName}`}
+      className={`mx-2 my-4 flex items-center gap-3 rounded-2xl p-4 font-dosis text-2xl text-white sm:w-[36rem] md:w-[46rem] ${sectionsClassName}`}
     >
       <div className='flex w-[50%] flex-col items-center'>
-        <h4>Sunrise</h4>
+        <h4 className='font-medium'>Sunrise</h4>
 
         <span>{sunrise}</span>
 
-        <picture>
+        <picture className='h-40 w-40 sm:h-60 sm:w-60'>
           <img src={Sunrise} alt='Sunrise' width={'100%'} height={'100%'} />
         </picture>
       </div>
 
       <div className='flex w-[50%] flex-col items-center'>
-        <h4>Sunset</h4>
+        <h4 className='font-medium'>Sunset</h4>
 
         <span>{sunset}</span>
 
-        <picture>
+        <picture className='h-40 w-40 sm:h-60 sm:w-60'>
           <img src={Sunset} alt='Sunset' width={'100%'} height={'100%'} />
         </picture>
       </div>
