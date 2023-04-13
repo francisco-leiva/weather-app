@@ -19,9 +19,7 @@ function App() {
   useEffect(() => {
     getLocation();
 
-    if (apiURL) {
-      getData();
-    }
+    apiURL && getData();
   }, [apiURL]);
 
   const getData = async () => {
