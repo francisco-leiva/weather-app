@@ -11,20 +11,17 @@ import Footer from './components/Footer';
 import { ThemeContext } from './context/ThemeContext';
 
 function App() {
-  const [apiURL, setApiURL] = useState(null);
   const { appClassName, dayCondition } = useContext(ThemeContext);
   const [weather, setWeather] = useState([]);
   const { current, location, forecast } = weather;
 
   useEffect(() => {
     getLocation();
+  }, []);
 
-    apiURL && getData();
-  }, [apiURL]);
-
-  const getData = async () => {
+  const getData = async (url) => {
     try {
-      const response = await axios.get(apiURL);
+      const response = await axios.get(url);
       const data = await response.data;
 
       // returns a code for each type of weather
@@ -41,16 +38,13 @@ function App() {
   };
 
   const getLocation = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((location) => {
-        const { latitude, longitude } = location.coords;
-        const queryParameter = latitude + ',' + longitude;
+    navigator.geolocation.getCurrentPosition((location) => {
+      const { latitude, longitude } = location.coords;
+      const queryParameter = latitude + ',' + longitude;
+      const url = `https://api.weatherapi.com/v1/forecast.json?key=27108248a8404184a5222207233103&q=${queryParameter}&days=7&aqi=no&alerts=no`;
 
-        setApiURL(
-          `https://api.weatherapi.com/v1/forecast.json?key=27108248a8404184a5222207233103&q=${queryParameter}&days=7&aqi=no&alerts=no`
-        );
-      });
-    }
+      getData(url);
+    });
   };
 
   return weather.length === 0 ? (
