@@ -20,6 +20,8 @@ This project was inspired by Samsung Mobile Weather application. Depending on th
 
 - [React](https://react.dev/)
 
+- [Vite](https://vitejs.dev/)
+
 - [Material UI](https://mui.com/)
 
 ## About me
