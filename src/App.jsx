@@ -38,13 +38,18 @@ function App() {
   };
 
   const getLocation = () => {
-    navigator.geolocation.getCurrentPosition((location) => {
-      const { latitude, longitude } = location.coords;
-      const queryParameter = latitude + ',' + longitude;
-      const url = `https://api.weatherapi.com/v1/forecast.json?key=27108248a8404184a5222207233103&q=${queryParameter}&days=7&aqi=no&alerts=no`;
+    navigator.geolocation.getCurrentPosition(
+      (location) => {
+        const { latitude, longitude } = location.coords;
+        const queryParameter = latitude + ',' + longitude;
+        const url = `https://api.weatherapi.com/v1/forecast.json?key=27108248a8404184a5222207233103&q=${queryParameter}&days=7&aqi=no&alerts=no`;
 
-      getData(url);
-    });
+        getData(url);
+      },
+      (e) => {
+        alert('You must accept the permissions. Reload the page.');
+      }
+    );
   };
 
   return weather.length === 0 ? (
