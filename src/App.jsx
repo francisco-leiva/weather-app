@@ -1,7 +1,6 @@
-import axios from 'axios';
-import Backdrop from '@mui/material/Backdrop';
-import CircularProgress from '@mui/material/CircularProgress';
-import { useState, useEffect, useContext } from 'react';
+import { useEffect, useContext } from 'react';
+import { useData } from './hooks/useData';
+import Loading from './components/Loading';
 import Header from './components/Header';
 import HourlyForecast from './components/HourlyForecast';
 import DailyForecast from './components/DailyForecast';
@@ -10,55 +9,17 @@ import OtherMeteorologicalData from './components/OtherMeteorologicalData';
 import Footer from './components/Footer';
 import { ThemeContext } from './context/ThemeContext';
 
-function App() {
+export default function App() {
   const { appClassName, dayCondition } = useContext(ThemeContext);
-  const [weather, setWeather] = useState([]);
+  const { weather, conditionCode, isDay } = useData();
   const { current, location, forecast } = weather;
 
   useEffect(() => {
-    getLocation();
+    dayCondition(conditionCode, isDay);
   }, []);
 
-  const getData = async (url) => {
-    try {
-      const response = await axios.get(url);
-      const data = await response.data;
-
-      // returns a code for each type of weather
-      const conditionCode = data?.current?.condition?.code;
-      // returns 1 if it's day and 0 if it's night
-      const isDay = data?.current?.is_day;
-
-      setWeather(data);
-
-      dayCondition(conditionCode, isDay);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  const getLocation = () => {
-    navigator.geolocation.getCurrentPosition(
-      (location) => {
-        const { latitude, longitude } = location.coords;
-        const queryParameter = latitude + ',' + longitude;
-        const url = `https://api.weatherapi.com/v1/forecast.json?key=27108248a8404184a5222207233103&q=${queryParameter}&days=7&aqi=no&alerts=no`;
-
-        getData(url);
-      },
-      (e) => {
-        alert('You must accept the permissions. Reload the page.');
-      }
-    );
-  };
-
   return weather.length === 0 ? (
-    <Backdrop
-      sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-      open={true}
-    >
-      <CircularProgress color='inherit' />
-    </Backdrop>
+    <Loading />
   ) : (
     <main className={`sm:flex sm:flex-col sm:items-center ${appClassName}`}>
       <Header
@@ -79,5 +40,3 @@ function App() {
     </main>
   );
 }
-
-export default App;
