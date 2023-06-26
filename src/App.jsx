@@ -16,7 +16,7 @@ export default function App() {
 
   useEffect(() => {
     dayCondition(conditionCode, isDay);
-  }, []);
+  }, [conditionCode, isDay]);
 
   return weather.length === 0 ? (
     <Loading />

@@ -20,63 +20,65 @@ const HourlyForecast = ({ forecast }) => {
 
   return (
     <section
-      className={`mx-2 my-4 flex gap-4 overflow-x-scroll rounded-2xl p-4 font-dosis text-lg text-white sm:max-w-xl sm:gap-8 sm:text-2xl md:max-w-[46rem] ${sectionsClassName} hourlyForecast`}
+      className={`mx-2 my-4 rounded-2xl font-dosis text-lg text-white sm:max-w-xl sm:text-2xl md:max-w-[46rem] ${sectionsClassName}`}
     >
-      {filterNextHoursOfDay.map((hour, index) => {
-        const nextHours = hour?.time.split(' ')[1];
-        const nextHoursTemp = Math.round(hour?.temp_c);
-        const nextHorsChanceOfRain = hour?.chance_of_rain;
+      <div className='hourlyForecast m-2 flex gap-4 overflow-x-scroll p-2 sm:gap-8 lg:mb-[0.1rem]'>
+        {filterNextHoursOfDay.map((hour, index) => {
+          const nextHours = hour?.time.split(' ')[1];
+          const nextHoursTemp = Math.round(hour?.temp_c);
+          const nextHorsChanceOfRain = hour?.chance_of_rain;
 
-        return (
-          <div
-            key={index}
-            className='flex flex-col items-center justify-between'
-          >
-            <h3>{nextHours}</h3>
+          return (
+            <div
+              key={index}
+              className='flex flex-col items-center justify-between'
+            >
+              <h3>{nextHours}</h3>
 
-            <picture className='h-12 w-12'>
-              <img
-                src={hour?.condition?.icon}
-                alt={hour?.condition?.text}
-                width={'100%'}
-                height={'100%'}
-              />
-            </picture>
+              <picture className='h-12 w-12'>
+                <img
+                  src={hour?.condition?.icon}
+                  alt={hour?.condition?.text}
+                  width={'100%'}
+                  height={'100%'}
+                />
+              </picture>
 
-            <h4>{nextHoursTemp}º</h4>
+              <h4>{nextHoursTemp}º</h4>
 
-            <span>{nextHorsChanceOfRain}%</span>
-          </div>
-        );
-      })}
+              <span>{nextHorsChanceOfRain}%</span>
+            </div>
+          );
+        })}
 
-      {filterNextHoursNextDay.map((hour, index) => {
-        const nextHours = hour?.time.split(' ')[1];
-        const nextHoursTemp = Math.round(hour?.temp_c);
-        const nextHorsChanceOfRain = hour?.chance_of_rain;
+        {filterNextHoursNextDay.map((hour, index) => {
+          const nextHours = hour?.time.split(' ')[1];
+          const nextHoursTemp = Math.round(hour?.temp_c);
+          const nextHorsChanceOfRain = hour?.chance_of_rain;
 
-        return (
-          <div
-            key={index}
-            className='flex flex-col items-center justify-between'
-          >
-            <h3>{nextHours}</h3>
+          return (
+            <div
+              key={index}
+              className='flex flex-col items-center justify-between'
+            >
+              <h3>{nextHours}</h3>
 
-            <picture className='h-12 w-12'>
-              <img
-                src={hour?.condition?.icon}
-                alt={hour?.condition?.text}
-                width={'100%'}
-                height={'100%'}
-              />
-            </picture>
+              <picture className='h-12 w-12'>
+                <img
+                  src={hour?.condition?.icon}
+                  alt={hour?.condition?.text}
+                  width={'100%'}
+                  height={'100%'}
+                />
+              </picture>
 
-            <h4>{nextHoursTemp}º</h4>
+              <h4>{nextHoursTemp}º</h4>
 
-            <span>{nextHorsChanceOfRain}%</span>
-          </div>
-        );
-      })}
+              <span>{nextHorsChanceOfRain}%</span>
+            </div>
+          );
+        })}
+      </div>
     </section>
   );
 };

@@ -12,12 +12,13 @@ const SunriseAndSunset = ({ forecast }) => {
   const sunriseTime = forecastday[0]?.astro?.sunrise;
   const sunrise = sunriseTime.split(' ')[0];
 
-  // Format forecastday[0].date = 2023-04-04, format astro.sunset = 06:54 PM
-  const sunsetFullDate = `${forecastday[0]?.date} ${forecastday[0]?.astro?.sunset}`;
+  // Format astro.sunset = 06:54 PM
+  const sunsetTime = forecastday[0]?.astro?.sunset.split(' ')[0];
+  const splittedSunsetTime = sunsetTime.split(':');
 
   // Want to turn it into 18:54
-  const sunsetHour = new Date(sunsetFullDate).getHours();
-  const sunsetMinutes = new Date(sunsetFullDate).getMinutes();
+  const sunsetHour = parseInt(splittedSunsetTime[0]) + 12;
+  const sunsetMinutes = splittedSunsetTime[1];
   const sunset = sunsetHour + ':' + sunsetMinutes;
 
   return (
