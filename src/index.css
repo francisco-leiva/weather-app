@@ -29,18 +29,22 @@
 
 .snowyDay {
   background-color: #3d4470;
+  color: white;
 }
 
 .snowyDaySections {
   background-color: #626689;
+  color: white;
 }
 
 .nightTheme {
   background-color: #505366;
+  color: white;
 }
 
 .nightThemeSections {
   background-color: #6c6e7b;
+  color: white;
 }
 
 @media screen and (min-width: 1024px) {

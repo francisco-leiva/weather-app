@@ -20,7 +20,7 @@ const HourlyForecast = ({ forecast }) => {
 
   return (
     <section
-      className={`mx-2 my-4 rounded-2xl font-dosis text-lg text-white sm:max-w-xl sm:text-2xl md:max-w-[46rem] ${sectionsClassName}`}
+      className={`mx-2 my-4 rounded-2xl font-dosis text-lg sm:max-w-xl sm:text-2xl md:max-w-[46rem] ${sectionsClassName}`}
     >
       <div className='hourlyForecast m-2 flex gap-4 overflow-x-scroll p-2 sm:gap-8 lg:mb-[0.1rem]'>
         {filterNextHoursOfDay.map((hour, index) => {
@@ -39,8 +39,8 @@ const HourlyForecast = ({ forecast }) => {
                 <img
                   src={hour?.condition?.icon}
                   alt={hour?.condition?.text}
-                  width={'100%'}
-                  height={'100%'}
+                  width={48}
+                  height={48}
                 />
               </picture>
 
@@ -67,8 +67,8 @@ const HourlyForecast = ({ forecast }) => {
                 <img
                   src={hour?.condition?.icon}
                   alt={hour?.condition?.text}
-                  width={'100%'}
-                  height={'100%'}
+                  width={48}
+                  height={48}
                 />
               </picture>
 

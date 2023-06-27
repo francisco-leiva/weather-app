@@ -18,7 +18,7 @@ const DailyForecast = ({ forecast }) => {
 
   return (
     <section
-      className={`mx-2 my-4 flex flex-col gap-3 rounded-2xl p-4 font-dosis text-xl text-white sm:my-0 sm:w-[36rem] sm:text-2xl md:w-[46rem] ${sectionsClassName}`}
+      className={`mx-2 my-4 flex flex-col gap-3 rounded-2xl p-4 font-dosis text-xl sm:my-0 sm:w-[36rem] sm:text-2xl md:w-[46rem] ${sectionsClassName}`}
     >
       {forecastday.map((day, index) => {
         // Format day.date = '2023-04-01'
@@ -33,7 +33,7 @@ const DailyForecast = ({ forecast }) => {
           <div key={index} className='flex items-center justify-between gap-4'>
             <h4 className='w-32 font-medium'>{dayName}</h4>
 
-            <span className='flex w-11 items-center text-base text-[#e9ecff] sm:w-14 sm:text-xl'>
+            <span className='flex w-11 items-center text-base opacity-60 sm:w-14 sm:text-xl'>
               <DropOfWater />
 
               {chanceOfRain}

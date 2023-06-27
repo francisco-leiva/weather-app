@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { fetchData } from '../api/api';
 
 export function useData() {
-  const defaultLocation = 'Mar del plata';
+  const defaultLocation = 'Rosario';
   const [weather, setWeather] = useState([]);
   const [conditionCode, setConditionCode] = useState('');
   const [isDay, setIsDay] = useState('');

@@ -42,11 +42,17 @@ const OtherMeteorologicalData = ({ currentWeather }) => {
 
   return (
     <section
-      className={`mx-2 my-4 flex items-center justify-between rounded-2xl p-4 font-dosis text-xl text-white sm:mt-0 sm:w-[36rem] sm:justify-around md:w-[46rem] ${sectionsClassName}`}
+      className={`mx-2 my-4 flex items-center justify-between rounded-2xl p-4 font-dosis text-xl sm:mt-0 sm:w-[36rem] sm:justify-around md:w-[46rem] ${sectionsClassName}`}
     >
       <div className='flex flex-col items-center gap-1'>
         <picture>
-          <img src={UVIndexIcon} alt='UV index' />
+          <img
+            src={UVIndexIcon}
+            alt='UV index'
+            width={64}
+            height={64}
+            loading='lazy'
+          />
         </picture>
 
         <h4 className='font-medium'>UV Index</h4>
@@ -56,7 +62,13 @@ const OtherMeteorologicalData = ({ currentWeather }) => {
 
       <div className='flex flex-col items-center gap-1'>
         <picture>
-          <img src={HumidityIcon} alt='Humidity' />
+          <img
+            src={HumidityIcon}
+            alt='Humidity'
+            width={64}
+            height={64}
+            loading='lazy'
+          />
         </picture>
 
         <h4 className='font-medium'>Humidity</h4>
@@ -66,7 +78,13 @@ const OtherMeteorologicalData = ({ currentWeather }) => {
 
       <div className='flex flex-col items-center gap-1'>
         <picture>
-          <img src={WindIcon} alt='Wind' />
+          <img
+            src={WindIcon}
+            alt='Wind'
+            width={64}
+            height={64}
+            loading='lazy'
+          />
         </picture>
 
         <h4 className='font-medium'>Wind</h4>

@@ -13,7 +13,7 @@ const Header = ({ currentWeather, location, forecast }) => {
 
   return (
     <header className='flex h-44 justify-around sm:w-[36rem] md:w-[46rem]'>
-      <div className='flex flex-col justify-end font-dosis text-white'>
+      <div className='flex flex-col justify-end font-dosis'>
         <h2 className='text-7xl font-medium'>{currentTemp}</h2>
 
         <span className='mt-2 flex items-center gap-0.5 text-3xl font-medium'>
@@ -28,8 +28,8 @@ const Header = ({ currentWeather, location, forecast }) => {
         <img
           src={currentWeather?.condition?.icon}
           alt={currentWeather?.condition?.text}
-          width={'92rem'}
-          height={'92rem'}
+          width={92}
+          height={92}
         />
       </picture>
     </header>
