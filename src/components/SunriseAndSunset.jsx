@@ -23,7 +23,7 @@ const SunriseAndSunset = ({ forecast }) => {
 
   return (
     <section
-      className={`mx-2 my-4 flex items-center gap-3 rounded-2xl p-4 font-dosis text-2xl sm:w-[36rem] md:w-[46rem] ${sectionsClassName}`}
+      className={`mx-2 my-4 flex items-center gap-3 rounded-2xl p-4 text-2xl sm:w-[36rem] md:w-[46rem] ${sectionsClassName}`}
     >
       <div className='flex w-[50%] flex-col items-center'>
         <h4 className='font-medium'>Sunrise</h4>

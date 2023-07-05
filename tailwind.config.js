@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        dosis: ['Dosis', 'sans-serif'],
+        poppins: ['Poppins', 'sans-serif'],
       },
     },
   },

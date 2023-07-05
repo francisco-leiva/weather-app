@@ -11,7 +11,7 @@ const Footer = ({ currentWeather }) => {
   const lastUpdated = `${fullDate}, ${hour} Update`;
 
   return (
-    <footer className='flex justify-between p-4 pt-0 font-dosis text-lg sm:w-[36rem] sm:text-xl'>
+    <footer className='flex justify-between p-4 pt-0 text-lg sm:w-[36rem] sm:text-xl'>
       <div>
         <a href='https://www.weatherapi.com/' title='Free Weather API'>
           WeatherAPI.com

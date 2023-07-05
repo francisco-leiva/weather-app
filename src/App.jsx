@@ -21,7 +21,9 @@ export default function App() {
   return weather.length === 0 ? (
     <Loading />
   ) : (
-    <main className={`sm:flex sm:flex-col sm:items-center ${appClassName}`}>
+    <main
+      className={`font-poppins sm:flex sm:flex-col sm:items-center ${appClassName}`}
+    >
       <Header
         currentWeather={current}
         location={location}

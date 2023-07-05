@@ -18,7 +18,7 @@ const DailyForecast = ({ forecast }) => {
 
   return (
     <section
-      className={`mx-2 my-4 flex flex-col gap-3 rounded-2xl p-4 font-dosis text-xl sm:my-0 sm:w-[36rem] sm:text-2xl md:w-[46rem] ${sectionsClassName}`}
+      className={`mx-2 my-4 flex flex-col gap-3 rounded-2xl p-4 text-xl sm:my-0 sm:w-[36rem] sm:text-2xl md:w-[46rem] ${sectionsClassName}`}
     >
       {forecastday.map((day, index) => {
         // Format day.date = '2023-04-01'
