@@ -20,9 +20,9 @@ const HourlyForecast = ({ forecast }) => {
 
   return (
     <section
-      className={`mx-2 my-4 rounded-2xl text-lg sm:max-w-xl sm:text-2xl md:max-w-[46rem] ${sectionsClassName}`}
+      className={`mx-2 my-4 rounded-2xl text-xl sm:max-w-xl sm:text-2xl md:max-w-[46rem] ${sectionsClassName}`}
     >
-      <div className='hourlyForecast m-2 flex gap-4 overflow-x-scroll p-2 sm:gap-8 lg:mb-[0.1rem]'>
+      <div className='hourlyForecast m-2 flex min-h-[10rem] gap-4 overflow-x-scroll p-2 sm:gap-8 lg:mb-[0.1rem]'>
         {filterNextHoursOfDay.map((hour, index) => {
           const nextHours = hour?.time.split(' ')[1];
           const nextHoursTemp = Math.round(hour?.temp_c);
