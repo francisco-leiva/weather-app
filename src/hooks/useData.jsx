@@ -2,19 +2,35 @@ import { useState, useEffect } from 'react';
 import { fetchData } from '../api/api';
 
 export function useData() {
-  const defaultLocation = 'Rosario';
   const [weather, setWeather] = useState([]);
   const [conditionCode, setConditionCode] = useState('');
   const [isDay, setIsDay] = useState('');
 
   useEffect(() => {
-    setDefaultLocation();
+    setLastLocation();
 
+    getLocation();
+  }, []);
+
+  const setLastLocation = async () => {
+    // getting last location from localStorage or set default location
+    const lastLocation = localStorage.getItem('coords') || 'Rosario';
+
+    const { data, conditionCode, isDay } = await fetchData(lastLocation);
+    setWeather(data);
+    setConditionCode(conditionCode);
+    setIsDay(isDay);
+  };
+
+  const getLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         async (location) => {
           const { latitude, longitude } = location.coords;
           const queryParameter = latitude + ',' + longitude;
+
+          // save location in localStorage
+          localStorage.setItem('coords', queryParameter);
 
           const { data, conditionCode, isDay } = await fetchData(
             queryParameter
@@ -28,13 +44,6 @@ export function useData() {
         }
       );
     }
-  }, []);
-
-  const setDefaultLocation = async () => {
-    const { data, conditionCode, isDay } = await fetchData(defaultLocation);
-    setWeather(data);
-    setConditionCode(conditionCode);
-    setIsDay(isDay);
   };
 
   return { weather, conditionCode, isDay };
