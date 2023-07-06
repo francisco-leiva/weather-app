@@ -9,19 +9,25 @@ export async function fetchData(query) {
       params: {
         key: API_KEY,
         q: query,
-        days: 7,
+        days: 3,
         aqi: 'no',
         alerts: 'no',
       },
     });
     const data = await response.data;
 
-    // returns a code for each type of weather
-    const conditionCode = data?.current?.condition?.code;
-    // returns 1 if it's day and 0 if it's night
-    const isDay = data?.current?.is_day;
+    const weather = {
+      currentWeather: data?.current,
+      location: data?.location,
+      forecast: data?.forecast?.forecastday,
+    };
 
-    return { data, conditionCode, isDay };
+    // returns a code for each type of weather
+    const conditionCode = weather.currentWeather.condition.code;
+    // returns 1 if it's day and 0 if it's night
+    const isDay = weather.currentWeather.is_day;
+
+    return { weather, conditionCode, isDay };
   } catch (err) {
     throw new Error('No se pudo encontrar la ubicación');
   }

@@ -11,21 +11,21 @@ import { ThemeContext } from './context/ThemeContext';
 
 export default function App() {
   const { appClassName, dayCondition } = useContext(ThemeContext);
-  const { weather, conditionCode, isDay } = useData();
-  const { current, location, forecast } = weather;
+  const { useWeather, conditionCode, isDay } = useData();
+  const { currentWeather, location, forecast } = useWeather;
 
   useEffect(() => {
     dayCondition(conditionCode, isDay);
   }, [conditionCode, isDay]);
 
-  return weather.length === 0 ? (
+  return useWeather.length === 0 ? (
     <Loading />
   ) : (
     <main
       className={`font-poppins sm:flex sm:flex-col sm:items-center ${appClassName}`}
     >
       <Header
-        currentWeather={current}
+        currentWeather={currentWeather}
         location={location}
         forecast={forecast}
       />
@@ -36,9 +36,9 @@ export default function App() {
 
       <SunriseAndSunset forecast={forecast} />
 
-      <OtherMeteorologicalData currentWeather={current} />
+      <OtherMeteorologicalData currentWeather={currentWeather} />
 
-      <Footer currentWeather={current} />
+      <Footer currentWeather={currentWeather} />
     </main>
   );
 }

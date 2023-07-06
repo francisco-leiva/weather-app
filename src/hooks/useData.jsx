@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { fetchData } from '../api/api';
 
 export function useData() {
-  const [weather, setWeather] = useState([]);
+  const [useWeather, setUseWeather] = useState([]);
   const [conditionCode, setConditionCode] = useState('');
   const [isDay, setIsDay] = useState('');
 
@@ -16,8 +16,8 @@ export function useData() {
     // getting last location from localStorage or set default location
     const lastLocation = localStorage.getItem('coords') || 'Rosario';
 
-    const { data, conditionCode, isDay } = await fetchData(lastLocation);
-    setWeather(data);
+    const { weather, conditionCode, isDay } = await fetchData(lastLocation);
+    setUseWeather(weather);
     setConditionCode(conditionCode);
     setIsDay(isDay);
   };
@@ -32,10 +32,10 @@ export function useData() {
           // save location in localStorage
           localStorage.setItem('coords', queryParameter);
 
-          const { data, conditionCode, isDay } = await fetchData(
+          const { weather, conditionCode, isDay } = await fetchData(
             queryParameter
           );
-          setWeather(data);
+          setUseWeather(weather);
           setConditionCode(conditionCode);
           setIsDay(isDay);
         },
@@ -46,5 +46,5 @@ export function useData() {
     }
   };
 
-  return { weather, conditionCode, isDay };
+  return { useWeather, conditionCode, isDay };
 }
