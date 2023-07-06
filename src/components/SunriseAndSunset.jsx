@@ -3,20 +3,17 @@ import Sunrise from '../assets/sunrise.png';
 import Sunset from '../assets/sunset.png';
 import { ThemeContext } from '../context/ThemeContext';
 
-const SunriseAndSunset = ({ forecast }) => {
+export default function SunriseAndSunset({ forecast }) {
   const { sectionsClassName } = useContext(ThemeContext);
 
-  const { forecastday } = forecast;
+  // astro.sunrise format = 07:17 AM
+  const sunrise = forecast[0]?.astro?.sunrise.split(' ')[0];
 
-  // Format astro.sunrise = 07:17 AM
-  const sunriseTime = forecastday[0]?.astro?.sunrise;
-  const sunrise = sunriseTime.split(' ')[0];
-
-  // Format astro.sunset = 06:54 PM
-  const sunsetTime = forecastday[0]?.astro?.sunset.split(' ')[0];
+  // astro.sunset format = 06:54 PM
+  const sunsetTime = forecast[0]?.astro?.sunset.split(' ')[0];
   const splittedSunsetTime = sunsetTime.split(':');
 
-  // Want to turn it into 18:54
+  // Want to turn it into 24 hours format (18:54)
   const sunsetHour = parseInt(splittedSunsetTime[0]) + 12;
   const sunsetMinutes = splittedSunsetTime[1];
   const sunset = sunsetHour + ':' + sunsetMinutes;
@@ -60,6 +57,4 @@ const SunriseAndSunset = ({ forecast }) => {
       </div>
     </section>
   );
-};
-
-export default SunriseAndSunset;
+}

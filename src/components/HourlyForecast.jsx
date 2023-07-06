@@ -1,20 +1,20 @@
 import { useContext } from 'react';
 import { ThemeContext } from '../context/ThemeContext';
 
-const HourlyForecast = ({ forecast }) => {
+export default function HourlyForecast({ forecast }) {
   const { sectionsClassName } = useContext(ThemeContext);
 
-  const { forecastday } = forecast;
-  const todaysHours = forecastday[0]?.hour;
-  const tomorrowsHours = forecastday[1]?.hour;
+  const todaysHourForecast = forecast[0]?.hour;
+  const tomorrowsHourForecast = forecast[1]?.hour;
   const time = new Date().getHours();
 
-  // Format hour.time = '31-3-2023 16:00'
-  const filterNextHoursOfDay = todaysHours.filter(
+  // filter next hours from current time
+  // hour.time format = '31-3-2023 16:00'
+  const filterNextHoursOfDay = todaysHourForecast.filter(
     (hour) => hour?.time.split(' ')[1] >= `${time}:00`
   );
 
-  const filterNextHoursNextDay = tomorrowsHours.filter(
+  const filterNextHoursNextDay = tomorrowsHourForecast.filter(
     (hour) => hour?.time.split(' ')[1] < `${time}:00`
   );
 
@@ -25,7 +25,7 @@ const HourlyForecast = ({ forecast }) => {
       <div className='hourlyForecast m-2 flex min-h-[10rem] gap-4 overflow-x-scroll p-2 sm:gap-8 lg:mb-[0.1rem]'>
         {filterNextHoursOfDay.map((hour, index) => {
           const nextHours = hour?.time.split(' ')[1];
-          const nextHoursTemp = Math.round(hour?.temp_c);
+          const nextHoursTemp = Math.round(hour?.temp_c) + 'º';
           const nextHorsChanceOfRain = hour?.chance_of_rain;
 
           return (
@@ -44,7 +44,7 @@ const HourlyForecast = ({ forecast }) => {
                 />
               </picture>
 
-              <h4>{nextHoursTemp}º</h4>
+              <h4>{nextHoursTemp}</h4>
 
               <span>{nextHorsChanceOfRain}%</span>
             </div>
@@ -81,6 +81,4 @@ const HourlyForecast = ({ forecast }) => {
       </div>
     </section>
   );
-};
-
-export default HourlyForecast;
+}

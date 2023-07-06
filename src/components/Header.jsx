@@ -1,15 +1,14 @@
 import { MapPin } from './Icons';
 
-const Header = ({ currentWeather, location, forecast }) => {
-  const { forecastday } = forecast;
-  const todaysForecast = forecastday[0]?.day;
+export default function Header({ currentWeather, location, forecast }) {
+  const todaysForecast = forecast[0]?.day;
 
-  const currentTemp = `${Math.round(currentWeather?.temp_c)}º`;
+  const currentTemp = Math.round(currentWeather?.temp_c) + 'º';
   const maxTemp = Math.round(todaysForecast?.maxtemp_c);
   const minTemp = Math.round(todaysForecast?.mintemp_c);
-  const feelsLikeTemp = Math.round(currentWeather?.feelslike_c);
+  const feelsLike = Math.round(currentWeather?.feelslike_c);
 
-  const temp = `${maxTemp}º / ${minTemp}º Feels like ${feelsLikeTemp}º`;
+  const temp = `${maxTemp}º / ${minTemp}º Feels like ${feelsLike}º`;
 
   return (
     <header className='flex h-44 justify-around sm:w-[36rem] md:w-[46rem]'>
@@ -34,6 +33,4 @@ const Header = ({ currentWeather, location, forecast }) => {
       </picture>
     </header>
   );
-};
-
-export default Header;
+}
