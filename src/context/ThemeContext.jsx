@@ -22,27 +22,30 @@ export const ThemeContextProvider = ({ children }) => {
       1066, 1114, 1210, 1213, 1216, 1219, 1222, 1225, 1255, 1258, 1279, 1282,
     ];
 
-    if (cloudyDayCode.includes(conditionCode) && isItDay === 1) {
-      dispatch({
-        type: 'CLOUDY_DAY',
-      });
-    }
-
-    if (rainyDayCode.includes(conditionCode) && isItDay === 1) {
-      dispatch({
-        type: 'RAINY_DAY',
-      });
-    }
-
-    if (snowyDayCode.includes(conditionCode) && isItDay === 1) {
-      dispatch({
-        type: 'SNOWY_DAY',
-      });
-    }
-
     if (isItDay === 0) {
       dispatch({
         type: 'NIGHT',
+      });
+      return;
+    }
+
+    if (cloudyDayCode.includes(conditionCode)) {
+      dispatch({
+        type: 'CLOUDY_DAY',
+      });
+      return;
+    }
+
+    if (rainyDayCode.includes(conditionCode)) {
+      dispatch({
+        type: 'RAINY_DAY',
+      });
+      return;
+    }
+
+    if (snowyDayCode.includes(conditionCode)) {
+      dispatch({
+        type: 'SNOWY_DAY',
       });
     }
   };

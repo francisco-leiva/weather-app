@@ -3,7 +3,6 @@ export const ThemeReducer = (state, action) => {
 
   if (type === 'CLOUDY_DAY') {
     return {
-      ...state,
       appClassName: 'cloudyDay',
       sectionsClassName: 'cloudyDaySections',
     };
@@ -11,7 +10,6 @@ export const ThemeReducer = (state, action) => {
 
   if (type === 'RAINY_DAY') {
     return {
-      ...state,
       appClassName: 'rainyDay',
       sectionsClassName: 'rainyDaySections',
     };
@@ -19,7 +17,6 @@ export const ThemeReducer = (state, action) => {
 
   if (type === 'SNOWY_DAY') {
     return {
-      ...state,
       appClassName: 'snowyDay',
       sectionsClassName: 'snowyDaySections',
     };
@@ -27,7 +24,6 @@ export const ThemeReducer = (state, action) => {
 
   if (type === 'NIGHT') {
     return {
-      ...state,
       appClassName: 'nightTheme',
       sectionsClassName: 'nightThemeSections',
     };
