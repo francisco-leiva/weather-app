@@ -33,14 +33,12 @@ export const ThemeContextProvider = ({ children }) => {
       dispatch({
         type: 'CLOUDY_DAY',
       });
-      return;
     }
 
     if (rainyDayCode.includes(conditionCode)) {
       dispatch({
         type: 'RAINY_DAY',
       });
-      return;
     }
 
     if (snowyDayCode.includes(conditionCode)) {

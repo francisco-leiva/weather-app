@@ -1,10 +1,10 @@
 # Weather App
 
-This project was inspired by Samsung Mobile Weather application. Depending on the type of weather, the application changes color.
+Real time Weather App. Depending on the type of weather, the app changes color.
 
 ## Links
 
-- Live Site URL: [Click here](https://weather-app-franciscoleiva.netlify.app/)
+- Live Site URL: [Click here](https://weather-fleiva.netlify.app/)
 
 ## My process
 
