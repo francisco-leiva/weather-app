@@ -20,14 +20,11 @@ export async function fetchData(query) {
       currentWeather: data?.current,
       location: data?.location,
       forecast: data?.forecast?.forecastday,
+      conditionCode: data?.current?.condition?.code,
+      isDay: data?.current?.is_day,
     };
 
-    // returns a code for each type of weather
-    const conditionCode = weather.currentWeather.condition.code;
-    // returns 1 if it's day and 0 if it's night
-    const isDay = weather.currentWeather.is_day;
-
-    return { weather, conditionCode, isDay };
+    return weather;
   } catch (err) {
     throw new Error('No se pudo encontrar la ubicación');
   }

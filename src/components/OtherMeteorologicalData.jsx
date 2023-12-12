@@ -1,12 +1,8 @@
-import { useContext } from 'react';
 import UVIndexIcon from '../assets/uv-index.png';
 import HumidityIcon from '../assets/humidity.png';
 import WindIcon from '../assets/wind.png';
-import { ThemeContext } from '../context/ThemeContext';
 
 export default function OtherMeteorologicalData({ currentWeather }) {
-  const { sectionsClassName } = useContext(ThemeContext);
-
   const { uv, humidity, wind_kph } = currentWeather;
   const wind = `${Math.round(wind_kph)} km/h`;
 
@@ -27,9 +23,7 @@ export default function OtherMeteorologicalData({ currentWeather }) {
   const uvIndex = UVIndexCalculate(uv);
 
   return (
-    <section
-      className={`mx-2 my-4 flex items-center justify-between rounded-2xl p-4 sm:mt-0 sm:w-[36rem] sm:justify-around md:w-[46rem] ${sectionsClassName}`}
-    >
+    <section className='mx-2 my-4 flex items-center justify-between rounded-2xl bg-[--bg-sections] p-4 sm:mt-0 sm:w-[36rem] sm:justify-around md:w-[46rem]'>
       <div className='flex flex-col items-center gap-1'>
         <picture>
           <img

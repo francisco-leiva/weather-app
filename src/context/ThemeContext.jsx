@@ -4,8 +4,7 @@ import { ThemeReducer } from './ThemeReducer';
 export const ThemeContext = createContext([]);
 
 const initialState = {
-  appClassName: 'sunnyDay',
-  sectionsClassName: 'sunnyDaySections',
+  theme: 'sunny',
 };
 
 export const ThemeContextProvider = ({ children }) => {
@@ -51,8 +50,7 @@ export const ThemeContextProvider = ({ children }) => {
   return (
     <ThemeContext.Provider
       value={{
-        appClassName: state.appClassName,
-        sectionsClassName: state.sectionsClassName,
+        theme: state.theme,
         dayCondition,
       }}
     >

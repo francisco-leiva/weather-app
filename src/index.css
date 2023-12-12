@@ -17,48 +17,34 @@ body::-webkit-scrollbar-thumb {
   background-color: #818181;
 }
 
-.sunnyDay {
-  background-color: #7cb2f2;
+main[data-theme='sunny'] {
+  --bg-main: #7cb2f2;
+  --bg-sections: #90bef0;
+  --text-color: #000000;
 }
 
-.sunnyDaySections {
-  background-color: #90bef0;
+main[data-theme='cloudy'] {
+  --bg-main: #8c8fde;
+  --bg-sections: #b8b5ff;
+  --text-color: #000000;
 }
 
-.cloudyDay {
-  background-color: #8c8fde;
+main[data-theme='rainy'] {
+  --bg-main: #58afc2;
+  --bg-sections: #87b7c5;
+  --text-color: #000000;
 }
 
-.cloudyDaySections {
-  background-color: #b8b5ff;
+main[data-theme='snowy'] {
+  --bg-main: #3d4470;
+  --bg-sections: #626689;
+  --text-color: #ffffff;
 }
 
-.rainyDay {
-  background-color: #58afc2;
-}
-
-.rainyDaySections {
-  background-color: #87b7c5;
-}
-
-.snowyDay {
-  background-color: #3d4470;
-  color: white;
-}
-
-.snowyDaySections {
-  background-color: #626689;
-  color: white;
-}
-
-.nightTheme {
-  background-color: #505366;
-  color: white;
-}
-
-.nightThemeSections {
-  background-color: #6c6e7b;
-  color: white;
+main[data-theme='night'] {
+  --bg-main: #505366;
+  --bg-sections: #6c6e7b;
+  --text-color: #ffffff;
 }
 
 @media screen and (min-width: 1024px) {

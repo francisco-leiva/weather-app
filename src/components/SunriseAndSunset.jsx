@@ -1,11 +1,7 @@
-import { useContext } from 'react';
 import Sunrise from '../assets/sunrise.png';
 import Sunset from '../assets/sunset.png';
-import { ThemeContext } from '../context/ThemeContext';
 
 export default function SunriseAndSunset({ forecast }) {
-  const { sectionsClassName } = useContext(ThemeContext);
-
   // astro.sunrise format = 07:17 AM
   const sunrise = forecast[0]?.astro?.sunrise.split(' ')[0];
 
@@ -19,9 +15,7 @@ export default function SunriseAndSunset({ forecast }) {
   const sunset = sunsetHour + ':' + sunsetMinutes;
 
   return (
-    <section
-      className={`mx-2 my-4 flex items-center gap-3 rounded-2xl p-4 text-2xl sm:w-[36rem] md:w-[46rem] ${sectionsClassName}`}
-    >
+    <section className='mx-2 my-4 flex items-center gap-3 rounded-2xl bg-[--bg-sections] p-4 text-2xl sm:w-[36rem] md:w-[46rem]'>
       <div className='flex w-[50%] flex-col items-center'>
         <h4 className='font-medium'>Sunrise</h4>
 

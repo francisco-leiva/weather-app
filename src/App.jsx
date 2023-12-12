@@ -10,19 +10,20 @@ import Footer from './components/Footer';
 import { ThemeContext } from './context/ThemeContext';
 
 export default function App() {
-  const { appClassName, dayCondition } = useContext(ThemeContext);
-  const { useWeather, conditionCode, isDay } = useData();
-  const { currentWeather, location, forecast } = useWeather;
+  const { theme, dayCondition } = useContext(ThemeContext);
+  const weather = useData();
+  const { currentWeather, location, forecast, conditionCode, isDay } = weather;
 
   useEffect(() => {
     dayCondition(conditionCode, isDay);
   }, [conditionCode, isDay]);
 
-  return useWeather.length === 0 ? (
+  return Object.keys(weather).length === 0 ? (
     <Loading />
   ) : (
     <main
-      className={`font-poppins sm:flex sm:flex-col sm:items-center ${appClassName}`}
+      data-theme={theme}
+      className='bg-[--bg-main] font-poppins text-[--text-color] sm:flex sm:flex-col sm:items-center'
     >
       <Header
         currentWeather={currentWeather}

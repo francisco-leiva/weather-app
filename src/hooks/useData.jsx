@@ -2,9 +2,7 @@ import { useState, useEffect } from 'react';
 import { fetchData } from '../api/api';
 
 export function useData() {
-  const [useWeather, setUseWeather] = useState([]);
-  const [conditionCode, setConditionCode] = useState('');
-  const [isDay, setIsDay] = useState('');
+  const [useWeather, setUseWeather] = useState({});
 
   useEffect(() => {
     setLastLocation();
@@ -16,10 +14,9 @@ export function useData() {
     // getting last location from localStorage or set default location
     const lastLocation = localStorage.getItem('coords') || 'Rosario';
 
-    const { weather, conditionCode, isDay } = await fetchData(lastLocation);
-    setUseWeather(weather);
-    setConditionCode(conditionCode);
-    setIsDay(isDay);
+    const data = await fetchData(lastLocation);
+
+    setUseWeather(data);
   };
 
   const getLocation = () => {
@@ -32,12 +29,9 @@ export function useData() {
           // save location in localStorage
           localStorage.setItem('coords', queryParameter);
 
-          const { weather, conditionCode, isDay } = await fetchData(
-            queryParameter
-          );
-          setUseWeather(weather);
-          setConditionCode(conditionCode);
-          setIsDay(isDay);
+          const data = await fetchData(queryParameter);
+
+          setUseWeather(data);
         },
         (e) => {
           throw new Error('You must accept the permissions. Reload the page.');
@@ -46,5 +40,5 @@ export function useData() {
     }
   };
 
-  return { useWeather, conditionCode, isDay };
+  return useWeather;
 }

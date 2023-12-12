@@ -1,10 +1,6 @@
-import { useContext } from 'react';
 import { DropOfWater } from './Icons';
-import { ThemeContext } from '../context/ThemeContext';
 
 export default function DailyForecast({ forecast }) {
-  const { sectionsClassName } = useContext(ThemeContext);
-
   const weekdays = [
     'Sunday',
     'Monday',
@@ -16,9 +12,7 @@ export default function DailyForecast({ forecast }) {
   ];
 
   return (
-    <section
-      className={`mx-2 my-4 flex flex-col gap-3 rounded-2xl p-4 text-lg sm:my-0 sm:w-[36rem] sm:text-2xl md:w-[46rem] ${sectionsClassName}`}
-    >
+    <section className='mx-2 my-4 flex flex-col gap-3 rounded-2xl bg-[--bg-sections] p-4 text-lg sm:my-0 sm:w-[36rem] sm:text-2xl md:w-[46rem]'>
       {forecast.map((day, index) => {
         // day.date format = '2023-04-01'
         const date = new Date(day.date).getUTCDay();

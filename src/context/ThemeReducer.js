@@ -3,29 +3,25 @@ export const ThemeReducer = (state, action) => {
 
   if (type === 'CLOUDY_DAY') {
     return {
-      appClassName: 'cloudyDay',
-      sectionsClassName: 'cloudyDaySections',
+      theme: 'cloudy',
     };
   }
 
   if (type === 'RAINY_DAY') {
     return {
-      appClassName: 'rainyDay',
-      sectionsClassName: 'rainyDaySections',
+      theme: 'rainy',
     };
   }
 
   if (type === 'SNOWY_DAY') {
     return {
-      appClassName: 'snowyDay',
-      sectionsClassName: 'snowyDaySections',
+      theme: 'snowy',
     };
   }
 
   if (type === 'NIGHT') {
     return {
-      appClassName: 'nightTheme',
-      sectionsClassName: 'nightThemeSections',
+      theme: 'night',
     };
   }
 
