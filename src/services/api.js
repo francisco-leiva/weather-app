@@ -3,7 +3,7 @@ import axios from 'axios';
 const API_URL = 'https://api.weatherapi.com/v1/forecast.json';
 const API_KEY = '27108248a8404184a5222207233103';
 
-export async function fetchData(query) {
+export async function fetchWeather(query) {
   try {
     const response = await axios.get(API_URL, {
       params: {

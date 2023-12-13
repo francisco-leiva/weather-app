@@ -1,5 +1,5 @@
 import { useEffect, useContext } from 'react';
-import { useData } from './hooks/useData';
+import { useWeather } from './hooks/useWeather';
 import Loading from './components/Loading';
 import Header from './components/Header';
 import HourlyForecast from './components/HourlyForecast';
@@ -11,7 +11,7 @@ import { ThemeContext } from './context/ThemeContext';
 
 export default function App() {
   const { theme, dayCondition } = useContext(ThemeContext);
-  const weather = useData();
+  const weather = useWeather();
   const { currentWeather, location, forecast, conditionCode, isDay } = weather;
 
   useEffect(() => {
