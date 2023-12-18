@@ -7,7 +7,7 @@ const initialState = {
   theme: 'sunny',
 };
 
-export const ThemeContextProvider = ({ children }) => {
+export function ThemeContextProvider({ children }) {
   const [state, dispatch] = useReducer(ThemeReducer, initialState);
 
   const dayCondition = (conditionCode, isItDay) => {
@@ -57,4 +57,4 @@ export const ThemeContextProvider = ({ children }) => {
       {children}
     </ThemeContext.Provider>
   );
-};
+}
