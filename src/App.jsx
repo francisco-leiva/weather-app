@@ -1,5 +1,5 @@
-import { useEffect, useContext } from 'react';
 import { useWeather } from './hooks/useWeather';
+import { useThemeContext } from './hooks/useThemeContext';
 import Loading from './components/Loading';
 import Header from './components/Header';
 import HourlyForecast from './components/HourlyForecast';
@@ -7,18 +7,13 @@ import DailyForecast from './components/DailyForecast';
 import SunriseAndSunset from './components/SunriseAndSunset';
 import OtherMeteorologicalData from './components/OtherMeteorologicalData';
 import Footer from './components/Footer';
-import { ThemeContext } from './context/ThemeContext';
 
 export default function App() {
-  const { theme, dayCondition } = useContext(ThemeContext);
-  const weather = useWeather();
+  const { weather, loading } = useWeather();
   const { currentWeather, location, forecast, conditionCode, isDay } = weather;
+  const theme = useThemeContext({ conditionCode, isDay });
 
-  useEffect(() => {
-    dayCondition(conditionCode, isDay);
-  }, [conditionCode, isDay]);
-
-  return Object.keys(weather).length === 0 ? (
+  return loading ? (
     <Loading />
   ) : (
     <main
