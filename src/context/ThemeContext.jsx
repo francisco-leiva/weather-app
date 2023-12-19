@@ -1,14 +1,16 @@
-import { createContext, useReducer } from 'react';
-import { ThemeReducer } from './ThemeReducer';
+import { createContext, useState } from 'react';
 
 export const ThemeContext = createContext([]);
 
-const initialState = {
-  theme: 'sunny',
+const CONDITION_TYPES = {
+  cloudy_day: 'cloudy',
+  rainy_day: 'rainy',
+  snowy_day: 'snowy',
+  night: 'night',
 };
 
 export function ThemeContextProvider({ children }) {
-  const [state, dispatch] = useReducer(ThemeReducer, initialState);
+  const [theme, setTheme] = useState('sunny');
 
   const dayCondition = (conditionCode, isItDay) => {
     // codes for time conditions
@@ -22,35 +24,27 @@ export function ThemeContextProvider({ children }) {
     ];
 
     if (isItDay === 0) {
-      dispatch({
-        type: 'NIGHT',
-      });
+      setTheme(CONDITION_TYPES.night);
       return;
     }
 
     if (cloudyDayCode.includes(conditionCode)) {
-      dispatch({
-        type: 'CLOUDY_DAY',
-      });
+      setTheme(CONDITION_TYPES.cloudy_day);
     }
 
     if (rainyDayCode.includes(conditionCode)) {
-      dispatch({
-        type: 'RAINY_DAY',
-      });
+      setTheme(CONDITION_TYPES.rainy_day);
     }
 
     if (snowyDayCode.includes(conditionCode)) {
-      dispatch({
-        type: 'SNOWY_DAY',
-      });
+      setTheme(CONDITION_TYPES.snowy_day);
     }
   };
 
   return (
     <ThemeContext.Provider
       value={{
-        theme: state.theme,
+        theme,
         dayCondition,
       }}
     >
