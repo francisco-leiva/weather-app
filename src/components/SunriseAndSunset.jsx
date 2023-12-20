@@ -1,29 +1,31 @@
-import Sunrise from '../assets/sunrise.png';
-import Sunset from '../assets/sunset.png';
+import sunriseImg from '../assets/sunrise.png';
+import sunsetImg from '../assets/sunset.png';
 
 export default function SunriseAndSunset({ forecast }) {
-  // astro.sunrise format = 07:17 AM
-  const sunrise = forecast[0]?.astro?.sunrise.split(' ')[0];
+  const {
+    date,
+    astro: { sunrise, sunset },
+  } = forecast[0];
+  // sunrise = "07:17 AM"
+  const sunriseTime = sunrise.split(' ')[0];
 
-  // astro.sunset format = 06:54 PM
-  const sunsetTime = forecast[0]?.astro?.sunset.split(' ')[0];
-  const splittedSunsetTime = sunsetTime.split(':');
+  // date = "2023-12-20"
+  // sunset = "06:54 PM"
+  const sunsetDate = new Date([date, sunset]);
 
-  // Want to turn it into 24 hours format (18:54)
-  const sunsetHour = parseInt(splittedSunsetTime[0]) + 12;
-  const sunsetMinutes = splittedSunsetTime[1];
-  const sunset = sunsetHour + ':' + sunsetMinutes;
+  // transform it into 24 hour format
+  const sunsetTime = sunsetDate.getHours() + ':' + sunsetDate.getMinutes();
 
   return (
     <section className='mx-2 my-4 flex items-center gap-3 rounded-2xl bg-[--bg-sections] p-4 text-2xl sm:w-[36rem] md:w-[46rem]'>
       <div className='flex w-[50%] flex-col items-center'>
         <h4 className='font-medium'>Sunrise</h4>
 
-        <span>{sunrise}</span>
+        <span>{sunriseTime}</span>
 
         <picture>
           <img
-            src={Sunrise}
+            src={sunriseImg}
             alt='Sunrise'
             width={160}
             height={160}
@@ -36,11 +38,11 @@ export default function SunriseAndSunset({ forecast }) {
       <div className='flex w-[50%] flex-col items-center'>
         <h4 className='font-medium'>Sunset</h4>
 
-        <span>{sunset}</span>
+        <span>{sunsetTime}</span>
 
         <picture>
           <img
-            src={Sunset}
+            src={sunsetImg}
             alt='Sunset'
             width={160}
             height={160}

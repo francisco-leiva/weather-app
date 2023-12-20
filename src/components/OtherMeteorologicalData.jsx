@@ -5,6 +5,7 @@ import WindIcon from '../assets/wind.png';
 export default function OtherMeteorologicalData({ currentWeather }) {
   const { uv, humidity, wind_kph } = currentWeather;
   const wind = `${Math.round(wind_kph)} km/h`;
+  const humidityText = humidity + '%';
 
   const UVIndexCalculate = (number) => {
     const risk = ['Low', 'Moderate', 'High', 'Very high', 'Extremely high'];
@@ -53,7 +54,7 @@ export default function OtherMeteorologicalData({ currentWeather }) {
 
         <h4 className='text-lg font-medium sm:text-2xl'>Humidity</h4>
 
-        <p className='text-lg sm:text-xl'>{humidity}%</p>
+        <p className='text-lg sm:text-xl'>{humidityText}</p>
       </div>
 
       <div className='flex flex-col items-center gap-1'>

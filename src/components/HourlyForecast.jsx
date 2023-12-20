@@ -1,73 +1,51 @@
 export default function HourlyForecast({ forecast }) {
-  const todaysHourForecast = forecast[0]?.hour;
-  const tomorrowsHourForecast = forecast[1]?.hour;
-  const time = new Date().getHours();
+  const todaysHours = forecast[0].hour;
+  const tomorrowsHours = forecast[1].hour;
+  const currHour = new Date().getHours();
 
   // filter next hours from current time
   // hour.time format = '31-3-2023 16:00'
-  const filterNextHoursOfDay = todaysHourForecast.filter(
-    (hour) => hour?.time.split(' ')[1] >= `${time}:00`
-  );
+  const nextHoursOfToday = todaysHours.filter((hour) => {
+    const getHour = new Date(hour.time).getHours();
+    return getHour >= currHour;
+  });
 
-  const filterNextHoursNextDay = tomorrowsHourForecast.filter(
-    (hour) => hour?.time.split(' ')[1] < `${time}:00`
-  );
+  const nextHoursOfTomorrow = tomorrowsHours.filter((hour) => {
+    const getHour = new Date(hour.time).getHours();
+    return getHour < currHour;
+  });
+
+  const hourlyForecast = [...nextHoursOfToday, ...nextHoursOfTomorrow];
 
   return (
-    <section className='mx-2 my-4 rounded-2xl bg-[--bg-sections] text-xl sm:max-w-xl sm:text-2xl md:max-w-[46rem]'>
-      <div className='hourlyForecast m-2 flex min-h-[10rem] gap-4 overflow-x-scroll p-2 sm:gap-8 lg:mb-[0.1rem]'>
-        {filterNextHoursOfDay.map((hour, index) => {
-          const nextHours = hour?.time.split(' ')[1];
-          const nextHoursTemp = Math.round(hour?.temp_c) + 'º';
-          const nextHorsChanceOfRain = hour?.chance_of_rain;
+    <section className='my-4 w-full max-w-[46rem] overflow-hidden rounded-2xl bg-[--bg-sections] text-xl sm:text-2xl'>
+      <div className='hourlyForecast m-2 flex min-h-[10rem] w-full gap-4 overflow-hidden overflow-x-scroll p-2 sm:gap-6 lg:mb-[0.1rem]'>
+        {hourlyForecast.map((hour, index) => {
+          const { time, temp_c, chance_of_rain, condition } = hour;
+          // time = '31-3-2023 16:00'
+          const hourText = time.split(' ')[1];
+          const hourTemp = Math.round(temp_c) + 'º';
+          const hourChanceOfRain = chance_of_rain + '%';
 
           return (
             <div
               key={index}
               className='flex flex-col items-center justify-between'
             >
-              <h3>{nextHours}</h3>
+              <h3>{hourText}</h3>
 
               <picture className='h-12 w-12'>
                 <img
-                  src={hour?.condition?.icon}
-                  alt={hour?.condition?.text}
+                  src={condition.icon}
+                  alt={condition.text}
                   width={48}
                   height={48}
                 />
               </picture>
 
-              <h4>{nextHoursTemp}</h4>
+              <h4>{hourTemp}</h4>
 
-              <span>{nextHorsChanceOfRain}%</span>
-            </div>
-          );
-        })}
-
-        {filterNextHoursNextDay.map((hour, index) => {
-          const nextHours = hour?.time.split(' ')[1];
-          const nextHoursTemp = Math.round(hour?.temp_c);
-          const nextHorsChanceOfRain = hour?.chance_of_rain;
-
-          return (
-            <div
-              key={index}
-              className='flex flex-col items-center justify-between'
-            >
-              <h3>{nextHours}</h3>
-
-              <picture className='h-12 w-12'>
-                <img
-                  src={hour?.condition?.icon}
-                  alt={hour?.condition?.text}
-                  width={48}
-                  height={48}
-                />
-              </picture>
-
-              <h4>{nextHoursTemp}º</h4>
-
-              <span>{nextHorsChanceOfRain}%</span>
+              <span>{hourChanceOfRain}</span>
             </div>
           );
         })}

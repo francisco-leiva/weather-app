@@ -1,17 +1,17 @@
-const Footer = ({ currentWeather }) => {
-  const { last_updated } = currentWeather;
-
-  const date = new Date(last_updated);
+export default function Footer() {
+  const date = new Date();
   const day = date.getDate();
   const month = date.getMonth() + 1;
-  const fullDate = day + '/' + month;
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
 
-  const hour = last_updated.split(' ')[1];
+  const fullDate = month + '/' + day;
+  const time = `${hours < 10 ? '0' + hours : hours}:${minutes}`;
 
-  const lastUpdated = `${fullDate}, ${hour} Update`;
+  const lastUpdated = `Updated ${fullDate}, ${time}`;
 
   return (
-    <footer className='flex justify-between p-4 pt-0 text-lg sm:w-[36rem] sm:text-xl'>
+    <footer className='flex w-full max-w-[46rem] justify-between pb-4 text-lg sm:text-xl'>
       <div>
         <a href='https://www.weatherapi.com/' title='Free Weather API'>
           WeatherAPI.com
@@ -23,6 +23,4 @@ const Footer = ({ currentWeather }) => {
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

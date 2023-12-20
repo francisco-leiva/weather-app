@@ -18,7 +18,7 @@ export default function App() {
   ) : (
     <main
       data-theme={theme}
-      className='bg-[--bg-main] font-poppins text-[--text-color] sm:flex sm:flex-col sm:items-center'
+      className='bg-[--bg-main] px-2 font-poppins text-[--text-color] sm:flex sm:flex-col sm:items-center'
     >
       <Header currentWeather={currentWeather} city={city} forecast={forecast} />
 
@@ -30,7 +30,7 @@ export default function App() {
 
       <OtherMeteorologicalData currentWeather={currentWeather} />
 
-      <Footer currentWeather={currentWeather} />
+      <Footer />
     </main>
   );
 }
