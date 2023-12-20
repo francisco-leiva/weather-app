@@ -17,11 +17,11 @@ export async function fetchWeather(query) {
     const data = await response.data;
 
     const weather = {
-      currentWeather: data?.current,
-      location: data?.location,
-      forecast: data?.forecast?.forecastday,
-      conditionCode: data?.current?.condition?.code,
-      isDay: data?.current?.is_day,
+      currentWeather: data.current,
+      city: data.location.name,
+      forecast: data.forecast.forecastday,
+      conditionCode: data.current.condition.code,
+      isDay: data.current.is_day,
     };
 
     return weather;

@@ -10,7 +10,7 @@ import Footer from './components/Footer';
 
 export default function App() {
   const { weather, loading } = useWeather();
-  const { currentWeather, location, forecast, conditionCode, isDay } = weather;
+  const { currentWeather, city, forecast, conditionCode, isDay } = weather;
   const theme = useThemeContext({ conditionCode, isDay });
 
   return loading ? (
@@ -20,11 +20,7 @@ export default function App() {
       data-theme={theme}
       className='bg-[--bg-main] font-poppins text-[--text-color] sm:flex sm:flex-col sm:items-center'
     >
-      <Header
-        currentWeather={currentWeather}
-        location={location}
-        forecast={forecast}
-      />
+      <Header currentWeather={currentWeather} city={city} forecast={forecast} />
 
       <HourlyForecast forecast={forecast} />
 
