@@ -9,14 +9,6 @@ export function useWeather() {
 
   useEffect(() => {
     getWeather();
-
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 1000);
-
-    return () => {
-      clearTimeout(timer);
-    };
   }, [location]);
 
   const getWeather = async () => {
@@ -24,6 +16,7 @@ export function useWeather() {
       setLoading(true);
       const data = await fetchWeather(location);
       setWeather(data);
+      setLoading(false);
     }
   };
 
