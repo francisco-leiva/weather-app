@@ -14,21 +14,27 @@ export default function Header({ currentWeather, city, forecast }) {
   const temp = `${maxTemp}º / ${minTemp}º Feels like ${feelsLike}º`;
 
   return (
-    <header className='mx-auto flex h-44 max-w-[46rem] justify-around'>
-      <div className='flex flex-col justify-end'>
-        <h2 className='text-7xl font-medium'>{currentTemp}</h2>
+    <header className='mx-auto grid min-h-[11rem] max-w-[46rem] grid-cols-[1fr_1fr] items-center justify-items-center'>
+      <div>
+        <h2 className='text-6xl font-bold sm:text-7xl'>{currentTemp}</h2>
 
-        <span className='mt-2 flex items-center gap-0.5 text-3xl font-medium'>
+        <h3 className='mt-2 text-2xl font-medium sm:text-3xl'>
           {city}
-          <MapPin />
-        </span>
+          <span className='ml-0.5'>
+            <MapPin />
+          </span>
+        </h3>
 
         <p className='mt-2 text-lg font-medium sm:text-xl'>{temp}</p>
       </div>
 
-      <picture className='flex items-center'>
-        <img src={imgSrc} alt={imgAlt} width={92} height={92} />
-      </picture>
+      <img
+        src={imgSrc}
+        alt={imgAlt}
+        width={64}
+        height={64}
+        className='h-28 w-28 sm:h-44 sm:w-44'
+      />
     </header>
   );
 }
