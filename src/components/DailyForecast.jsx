@@ -26,24 +26,25 @@ export default function DailyForecast({ forecast }) {
         const minTemp = Math.round(mintemp_c) + 'º';
 
         return (
-          <div key={index} className='flex items-center justify-between gap-1'>
-            <h4 className='w-28 font-medium sm:w-36'>{nameOfDay}</h4>
+          <div
+            key={index}
+            className='grid grid-cols-dailyforecast-sm items-center justify-items-center sm:grid-cols-dailyforecast-md'
+          >
+            <h4 className='justify-self-start font-medium'>{nameOfDay}</h4>
 
-            <div className='flex w-12 items-center opacity-60 sm:w-14'>
+            <div className='flex items-center opacity-60'>
               <DropOfWater />
 
               <span className='text-sm sm:text-xl'>{chanceOfRain}</span>
             </div>
 
-            <picture>
-              <img
-                src={condition.icon}
-                alt={condition.text}
-                width={40}
-                height={40}
-                className='h-10 w-10 sm:h-14 sm:w-14'
-              />
-            </picture>
+            <img
+              src={condition.icon}
+              alt={condition.text}
+              width={40}
+              height={40}
+              className='h-10 w-10 sm:h-14 sm:w-14'
+            />
 
             <span className='font-medium'>{maxTemp}</span>
 

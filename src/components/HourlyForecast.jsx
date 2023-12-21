@@ -18,7 +18,7 @@ export default function HourlyForecast({ forecast }) {
   const hourlyForecast = [...nextHoursOfToday, ...nextHoursOfTomorrow];
 
   return (
-    <section className='mx-auto my-4 max-w-[46rem] overflow-hidden rounded-2xl bg-[--bg-sections] p-4 text-xl sm:text-2xl lg:pb-2'>
+    <section className='mx-auto my-4 max-w-[46rem] overflow-hidden rounded-2xl bg-[--bg-sections] p-4 text-xl sm:text-2xl md:pb-2'>
       <div className='hourlyForecast flex min-h-[10rem] w-full flex-nowrap gap-4 overflow-y-hidden overflow-x-scroll sm:gap-6'>
         {hourlyForecast.map((hour, index) => {
           const { time, temp_c, chance_of_rain, condition } = hour;
