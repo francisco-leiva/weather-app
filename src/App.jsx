@@ -18,7 +18,7 @@ export default function App() {
   ) : (
     <main
       data-theme={theme}
-      className='bg-[--bg-main] px-2 font-poppins text-[--text-color] sm:flex sm:flex-col sm:items-center'
+      className='bg-[--bg-main] px-2 font-poppins text-[--text-color] md:px-0'
     >
       <Header currentWeather={currentWeather} city={city} forecast={forecast} />
 

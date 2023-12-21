@@ -17,7 +17,7 @@ export default function SunriseAndSunset({ forecast }) {
   const sunsetTime = sunsetDate.getHours() + ':' + sunsetDate.getMinutes();
 
   return (
-    <section className='mx-2 my-4 flex items-center gap-3 rounded-2xl bg-[--bg-sections] p-4 text-2xl sm:w-[36rem] md:w-[46rem]'>
+    <section className='mx-auto my-4 flex max-w-[46rem] items-center gap-3 rounded-2xl bg-[--bg-sections] p-4 text-2xl'>
       <div className='flex w-[50%] flex-col items-center'>
         <h4 className='font-medium'>Sunrise</h4>
 

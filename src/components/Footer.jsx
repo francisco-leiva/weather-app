@@ -11,7 +11,7 @@ export default function Footer() {
   const lastUpdated = `Updated ${fullDate}, ${time}`;
 
   return (
-    <footer className='flex w-full max-w-[46rem] justify-between pb-4 text-lg sm:text-xl'>
+    <footer className='mx-auto mt-4 flex max-w-[46rem] justify-between pb-4 text-lg sm:text-xl'>
       <div>
         <a href='https://www.weatherapi.com/' title='Free Weather API'>
           WeatherAPI.com

@@ -12,7 +12,7 @@ export default function DailyForecast({ forecast }) {
   ];
 
   return (
-    <section className='mx-2 my-4 flex flex-col gap-3 rounded-2xl bg-[--bg-sections] p-4 text-lg sm:my-0 sm:w-[36rem] sm:text-2xl md:w-[46rem]'>
+    <section className='mx-auto my-4 flex max-w-[46rem] flex-col gap-3 rounded-2xl bg-[--bg-sections] p-4 text-lg sm:text-2xl'>
       {forecast.map((forecastDay, index) => {
         const { date, day } = forecastDay;
         const { daily_chance_of_rain, maxtemp_c, mintemp_c, condition } = day;

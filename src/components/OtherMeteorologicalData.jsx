@@ -24,7 +24,7 @@ export default function OtherMeteorologicalData({ currentWeather }) {
   const uvIndex = UVIndexCalculate(uv);
 
   return (
-    <section className='mx-2 my-4 flex items-center justify-between rounded-2xl bg-[--bg-sections] p-4 sm:mt-0 sm:w-[36rem] sm:justify-around md:w-[46rem]'>
+    <section className='mx-auto my-4 flex max-w-[46rem] items-center justify-between rounded-2xl bg-[--bg-sections] p-4 sm:justify-around'>
       <div className='flex flex-col items-center gap-1'>
         <picture>
           <img

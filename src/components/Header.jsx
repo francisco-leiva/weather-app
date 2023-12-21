@@ -14,7 +14,7 @@ export default function Header({ currentWeather, city, forecast }) {
   const temp = `${maxTemp}º / ${minTemp}º Feels like ${feelsLike}º`;
 
   return (
-    <header className='flex h-44 w-full max-w-[46rem] justify-around'>
+    <header className='mx-auto flex h-44 max-w-[46rem] justify-around'>
       <div className='flex flex-col justify-end'>
         <h2 className='text-7xl font-medium'>{currentTemp}</h2>
 
