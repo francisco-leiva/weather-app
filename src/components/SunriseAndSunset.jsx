@@ -17,39 +17,35 @@ export default function SunriseAndSunset({ forecast }) {
   const sunsetTime = sunsetDate.getHours() + ':' + sunsetDate.getMinutes();
 
   return (
-    <section className='mx-auto my-4 flex max-w-[46rem] items-center gap-3 rounded-2xl bg-[--bg-sections] p-4 text-2xl'>
-      <div className='flex w-[50%] flex-col items-center'>
-        <h4 className='font-medium'>Sunrise</h4>
+    <section className='mx-auto my-4 grid max-w-[46rem] grid-cols-[1fr_1fr] justify-items-center rounded-2xl bg-[--bg-sections] p-4'>
+      <div className='flex flex-col items-center'>
+        <h4 className='text-xl font-medium sm:text-2xl'>Sunrise</h4>
 
-        <span>{sunriseTime}</span>
+        <span className='text-xl sm:text-2xl'>{sunriseTime}</span>
 
-        <picture>
-          <img
-            src={sunriseImg}
-            alt='Sunrise'
-            width={160}
-            height={160}
-            loading='lazy'
-            className='sm:h-60 sm:w-60'
-          />
-        </picture>
+        <img
+          src={sunriseImg}
+          alt='Sunrise'
+          width={500}
+          height={500}
+          loading='lazy'
+          className='h-32 w-32 sm:h-60 sm:w-60'
+        />
       </div>
 
-      <div className='flex w-[50%] flex-col items-center'>
-        <h4 className='font-medium'>Sunset</h4>
+      <div className='flex flex-col items-center'>
+        <h4 className='text-xl font-medium sm:text-2xl'>Sunset</h4>
 
-        <span>{sunsetTime}</span>
+        <span className='text-xl sm:text-2xl'>{sunsetTime}</span>
 
-        <picture>
-          <img
-            src={sunsetImg}
-            alt='Sunset'
-            width={160}
-            height={160}
-            loading='lazy'
-            className='sm:h-60 sm:w-60'
-          />
-        </picture>
+        <img
+          src={sunsetImg}
+          alt='Sunset'
+          width={500}
+          height={500}
+          loading='lazy'
+          className='h-32 w-32 sm:h-60 sm:w-60'
+        />
       </div>
     </section>
   );

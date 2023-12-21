@@ -24,49 +24,37 @@ export default function OtherMeteorologicalData({ currentWeather }) {
   const uvIndex = UVIndexCalculate(uv);
 
   return (
-    <section className='mx-auto my-4 flex max-w-[46rem] items-center justify-between rounded-2xl bg-[--bg-sections] p-4 sm:justify-around'>
-      <div className='flex flex-col items-center gap-1'>
-        <picture>
-          <img
-            src={UVIndexIcon}
-            alt='UV index'
-            width={64}
-            height={64}
-            loading='lazy'
-          />
-        </picture>
+    <section className='mx-auto my-4 grid max-w-[46rem] grid-cols-[1fr_1fr_1fr] rounded-2xl bg-[--bg-sections] p-4'>
+      <div className='flex flex-col items-center gap-1 justify-self-start sm:justify-self-center'>
+        <img
+          src={UVIndexIcon}
+          alt='UV index'
+          width={64}
+          height={64}
+          loading='lazy'
+        />
 
         <h4 className='text-lg font-medium sm:text-2xl'>UV Index</h4>
 
         <p className='text-lg sm:text-xl'>{uvIndex}</p>
       </div>
 
-      <div className='flex flex-col items-center gap-1'>
-        <picture>
-          <img
-            src={HumidityIcon}
-            alt='Humidity'
-            width={64}
-            height={64}
-            loading='lazy'
-          />
-        </picture>
+      <div className='flex flex-col items-center gap-1 justify-self-center'>
+        <img
+          src={HumidityIcon}
+          alt='Humidity'
+          width={64}
+          height={64}
+          loading='lazy'
+        />
 
         <h4 className='text-lg font-medium sm:text-2xl'>Humidity</h4>
 
         <p className='text-lg sm:text-xl'>{humidityText}</p>
       </div>
 
-      <div className='flex flex-col items-center gap-1'>
-        <picture>
-          <img
-            src={WindIcon}
-            alt='Wind'
-            width={64}
-            height={64}
-            loading='lazy'
-          />
-        </picture>
+      <div className='flex flex-col items-center gap-1 justify-self-end sm:justify-self-center'>
+        <img src={WindIcon} alt='Wind' width={64} height={64} loading='lazy' />
 
         <h4 className='text-lg font-medium sm:text-2xl'>Wind</h4>
 
