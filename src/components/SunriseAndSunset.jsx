@@ -11,10 +11,12 @@ export default function SunriseAndSunset({ forecast }) {
 
   // date = "2023-12-20"
   // sunset = "06:54 PM"
-  const sunsetDate = new Date([date, sunset]);
-
   // transform it into 24 hour format
-  const sunsetTime = sunsetDate.getHours() + ':' + sunsetDate.getMinutes();
+  const sunsetTime = new Date([date, sunset]).toLocaleTimeString('en-US', {
+    hour: 'numeric',
+    minute: 'numeric',
+    hour12: false,
+  });
 
   return (
     <section className='mx-auto my-4 grid max-w-[46rem] grid-cols-[1fr_1fr] justify-items-center rounded-2xl bg-[--bg-sections] p-4'>

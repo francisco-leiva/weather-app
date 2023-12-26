@@ -1,12 +1,16 @@
 export default function Footer() {
   const date = new Date();
-  const day = date.getDate();
-  const month = date.getMonth() + 1;
-  const hours = date.getHours();
-  const minutes = date.getMinutes();
 
-  const fullDate = month + '/' + day;
-  const time = `${hours < 10 ? '0' + hours : hours}:${minutes}`;
+  const fullDate = date.toLocaleDateString('en-US', {
+    day: '2-digit',
+    month: '2-digit',
+  });
+
+  const time = date.toLocaleTimeString('en-US', {
+    hour: '2-digit',
+    minute: 'numeric',
+    hour12: false,
+  });
 
   const lastUpdated = `Updated ${fullDate}, ${time}`;
 
