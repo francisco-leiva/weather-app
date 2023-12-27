@@ -1,6 +1,9 @@
 import { createContext, useState } from 'react';
 
-export const ThemeContext = createContext([]);
+export const ThemeContext = createContext({
+  theme: 'sunny',
+  dayCondition: () => {},
+});
 
 const CONDITION_TYPES = {
   cloudy_day: 'cloudy',
