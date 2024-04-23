@@ -1,13 +1,7 @@
-import Backdrop from '@mui/material/Backdrop';
-import CircularProgress from '@mui/material/CircularProgress';
-
 export default function Loading() {
   return (
-    <Backdrop
-      sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-      open={true}
-    >
-      <CircularProgress color='inherit' />
-    </Backdrop>
+    <div className='flex h-[100dvh] w-[100dvw] items-center justify-center bg-black/30'>
+      <span className='h-12 w-12 animate-spin rounded-full border-[3px] border-solid border-white border-b-transparent'></span>
+    </div>
   );
 }

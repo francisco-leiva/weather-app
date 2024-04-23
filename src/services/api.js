@@ -1,21 +1,23 @@
-import axios from 'axios';
-
-const API_URL = 'https://api.weatherapi.com/v1/forecast.json';
 const API_KEY = '27108248a8404184a5222207233103';
 
 export async function fetchWeather(query) {
   try {
-    const response = await axios.get(API_URL, {
-      params: {
-        key: API_KEY,
-        q: query,
-        days: 3,
-        aqi: 'no',
-        alerts: 'no',
-      },
+    const params = new URLSearchParams({
+      key: API_KEY,
+      q: query,
+      days: 3,
+      aqi: 'no',
+      alerts: 'no',
     });
-    const data = await response.data;
+    const response = await fetch(
+      `https://api.weatherapi.com/v1/forecast.json?${params}`
+    );
 
+    if (!response.ok) {
+      throw new Error(response.status);
+    }
+
+    const data = await response.json();
     const weather = {
       currentWeather: data.current,
       city: data.location.name,
@@ -26,6 +28,9 @@ export async function fetchWeather(query) {
 
     return weather;
   } catch (err) {
-    throw new Error('No se pudo encontrar la ubicación');
+    console.error(
+      'No se pudo encontrar la ubicación, estado de respuesta:',
+      err
+    );
   }
 }
