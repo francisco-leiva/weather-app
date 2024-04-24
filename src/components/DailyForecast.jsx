@@ -28,7 +28,7 @@ export default function DailyForecast({ forecast }) {
         return (
           <div
             key={index}
-            className='grid grid-cols-dailyforecast-sm items-center justify-items-center sm:grid-cols-dailyforecast-md'
+            className='grid grid-cols-[2fr_repeat(4,1fr)] items-center justify-items-center'
           >
             <h4 className='justify-self-start font-medium'>{nameOfDay}</h4>
 
