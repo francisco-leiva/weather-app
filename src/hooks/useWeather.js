@@ -1,24 +1,60 @@
 import { useState, useEffect } from 'react';
 import { fetchWeather } from '../services/api';
-import { useLocation } from './useLocation';
 
 export function useWeather() {
   const [weather, setWeather] = useState({});
   const [loading, setLoading] = useState(true);
-  const location = useLocation();
+  const [coords, setCoords] = useState(null);
+  const prevCoords = localStorage.getItem('coords');
 
   useEffect(() => {
-    getWeather();
-  }, [location]);
+    // get user location
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          const coordsString = latitude + ',' + longitude;
 
-  const getWeather = async () => {
-    if (location) {
-      setLoading(true);
-      const data = await fetchWeather(location);
-      setWeather(data);
-      setLoading(false);
+          // setting coords
+          setCoords(coordsString);
+          // save location in localStorage
+          localStorage.setItem('coords', coordsString);
+        },
+        (e) => {
+          console.error('Could not get your location', e);
+        }
+      );
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    if (!coords && prevCoords) {
+      setLoading(true);
+      fetchWeather(prevCoords).then((data) => {
+        setWeather(data);
+        setLoading(false);
+      });
+      return;
+    }
+
+    if (coords && coords !== prevCoords) {
+      setLoading(true);
+      fetchWeather(coords).then((data) => {
+        setWeather(data);
+        setLoading(false);
+      });
+      return;
+    }
+
+    // default location
+    if (!coords && !prevCoords) {
+      setLoading(true);
+      fetchWeather('Rosario').then((data) => {
+        setWeather(data);
+        setLoading(false);
+      });
+    }
+  }, [coords]);
 
   return { weather, loading };
 }
