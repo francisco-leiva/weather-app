@@ -25,7 +25,7 @@ export default function Header({ currentWeather, city, forecast }) {
           name='q'
           aria-label='Search weather for a city'
           placeholder='Search for a city, eg. London'
-          className='h-10 w-full rounded-2xl bg-[--bg-sections] indent-2 focus:outline-none focus:ring-1 focus:ring-black/80'
+          className='h-10 w-full rounded-2xl bg-[--bg-sections] indent-3 placeholder:text-[--input-placeholder] focus:outline-none focus:ring-1 focus:ring-black/80'
           ref={inputRef}
         />
       </Form>
