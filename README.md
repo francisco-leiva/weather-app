@@ -12,8 +12,6 @@ Real time Weather App. Depending on the type of weather, the app changes color.
 
 - React Hooks
 
-- Context
-
 - [WeatherAPI](https://www.weatherapi.com/)
 
 ## Frameworks and libraries

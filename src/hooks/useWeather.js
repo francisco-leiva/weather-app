@@ -32,7 +32,6 @@ export function useWeather() {
     if (coords && coords === prevCoords) return;
 
     if (coords) {
-      setLoading(true);
       fetchWeather(coords).then((data) => {
         setWeather(data);
         setLoading(false);
@@ -43,7 +42,6 @@ export function useWeather() {
     }
 
     if (prevCoords) {
-      setLoading(true);
       fetchWeather(prevCoords).then((data) => {
         setWeather(data);
         setLoading(false);
@@ -52,14 +50,13 @@ export function useWeather() {
     }
 
     // default location
-    setLoading(true);
     fetchWeather('-32.945805, -60.653698').then((data) => {
       setWeather(data);
       setLoading(false);
     });
 
     localStorage.setItem('coords', '-32.945805, -60.653698');
-  }, [coords]);
+  }, [coords, loading]);
 
   return { weather, loading };
 }

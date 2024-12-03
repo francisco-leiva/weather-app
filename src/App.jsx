@@ -1,5 +1,5 @@
 import { useWeather } from './hooks/useWeather';
-import { useThemeContext } from './hooks/useThemeContext';
+import { setWeatherTheme } from './functions/setWeatherTheme';
 import Loading from './components/Loading';
 import Header from './components/Header';
 import HourlyForecast from './components/HourlyForecast';
@@ -11,7 +11,7 @@ import Footer from './components/Footer';
 export default function App() {
   const { weather, loading } = useWeather();
   const { currentWeather, city, forecast, conditionCode, isDay } = weather;
-  const theme = useThemeContext({ conditionCode, isDay });
+  const theme = setWeatherTheme(conditionCode, isDay);
 
   return loading ? (
     <Loading />

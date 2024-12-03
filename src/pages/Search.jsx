@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { fetchWeather } from '../services/api';
-import { useThemeContext } from '../hooks/useThemeContext';
+import { setWeatherTheme } from '../functions/setWeatherTheme';
 import Loading from '../components/Loading';
 import Header from '../components/Header';
 import HourlyForecast from '../components/HourlyForecast';
@@ -23,7 +23,7 @@ export default function Search() {
   const forecast = weather?.forecast;
   const conditionCode = weather?.conditionCode;
   const isDay = weather?.isDay;
-  const theme = useThemeContext({ conditionCode, isDay });
+  const theme = setWeatherTheme(conditionCode, isDay);
 
   useEffect(() => {
     setLoading(true);
