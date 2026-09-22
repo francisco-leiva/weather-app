@@ -26,26 +26,22 @@ export function useWeather() {
         }
       );
     }
-  }, []);
 
-  useEffect(() => {
-    if (coords && coords === prevCoords) return;
+    if ((coords && coords === prevCoords) || prevCoords) {
+      fetchWeather(prevCoords).then((data) => {
+        setWeather(data);
+        setLoading(false);
+      });
+      return;
+    }
 
-    if (coords) {
+    if (coords && coords !== prevCoords) {
       fetchWeather(coords).then((data) => {
         setWeather(data);
         setLoading(false);
       });
 
       localStorage.setItem('coords', coords);
-      return;
-    }
-
-    if (prevCoords) {
-      fetchWeather(prevCoords).then((data) => {
-        setWeather(data);
-        setLoading(false);
-      });
       return;
     }
 
