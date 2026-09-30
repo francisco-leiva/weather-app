@@ -1,5 +1,5 @@
-import { useWeather } from './hooks/useWeather';
-import { setWeatherTheme } from './functions/setWeatherTheme';
+import { useContext } from 'react';
+import { WeatherContext } from './context/weatherContext';
 import Loading from './components/Loading';
 import Header from './components/Header';
 import HourlyForecast from './components/HourlyForecast';
@@ -9,16 +9,15 @@ import OtherMeteorologicalData from './components/OtherMeteorologicalData';
 import Footer from './components/Footer';
 
 export default function App() {
-  const { weather, loading } = useWeather();
-  const { currentWeather, city, forecast, conditionCode, isDay } = weather;
-  const theme = setWeatherTheme(conditionCode, isDay);
+  const { loading, currentWeather, city, forecast, theme } =
+    useContext(WeatherContext);
 
-  return loading ? (
-    <Loading />
-  ) : (
+  if (loading) return <Loading />;
+
+  return (
     <main
       data-theme={theme}
-      className='bg-[--bg-main] px-2 font-poppins text-[--text-color] md:px-0'
+      className='font-poppins bg-[--bg-main] px-2 text-[--text-color] md:px-0'
     >
       <Header currentWeather={currentWeather} city={city} forecast={forecast} />
 

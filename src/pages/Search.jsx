@@ -1,7 +1,5 @@
-import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import { fetchWeather } from '../services/api';
-import { setWeatherTheme } from '../functions/setWeatherTheme';
+import { useContext } from 'react';
+import { WeatherContext } from '../context/weatherContext';
 import Loading from '../components/Loading';
 import Header from '../components/Header';
 import HourlyForecast from '../components/HourlyForecast';
@@ -11,34 +9,15 @@ import OtherMeteorologicalData from '../components/OtherMeteorologicalData';
 import Footer from '../components/Footer';
 
 export default function Search() {
-  // get url params
-  const location = useLocation();
-  const params = new URLSearchParams(location.search);
-  const query = params.get('q');
-  // setting up weather
-  const [weather, setWeather] = useState({});
-  const [loading, setLoading] = useState(true);
-  const currentWeather = weather?.currentWeather;
-  const city = weather?.city;
-  const forecast = weather?.forecast;
-  const conditionCode = weather?.conditionCode;
-  const isDay = weather?.isDay;
-  const theme = setWeatherTheme(conditionCode, isDay);
+  const { loading, currentWeather, city, forecast, theme } =
+    useContext(WeatherContext);
 
-  useEffect(() => {
-    setLoading(true);
-    fetchWeather(query).then((data) => {
-      setWeather(data);
-      setLoading(false);
-    });
-  }, [query]);
+  if (loading) return <Loading />;
 
-  return loading ? (
-    <Loading />
-  ) : (
+  return (
     <main
       data-theme={theme}
-      className='bg-[--bg-main] px-2 font-poppins text-[--text-color] md:px-0'
+      className='font-poppins bg-[--bg-main] px-2 text-[--text-color] md:px-0'
     >
       <Header currentWeather={currentWeather} city={city} forecast={forecast} />
 
