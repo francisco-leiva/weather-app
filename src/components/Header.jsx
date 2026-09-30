@@ -1,10 +1,7 @@
-import { useRef } from 'react';
 import { Form } from 'react-router-dom';
 import { MapPin } from './Icons';
 
 export default function Header({ currentWeather, city, forecast }) {
-  const inputRef = useRef(null);
-
   const imgSrc = currentWeather.condition.icon;
   const imgAlt = currentWeather.condition.text;
 
@@ -25,8 +22,7 @@ export default function Header({ currentWeather, city, forecast }) {
           name='q'
           aria-label='Search weather for a city'
           placeholder='Search for a city, eg. London'
-          className='placeholder:text-[--input-placeholder]/60 h-10 w-full rounded-2xl bg-[--bg-sections] indent-3 focus:outline-none focus:ring-1 focus:ring-black/80'
-          ref={inputRef}
+          className='placeholder:text-[--input-placeholder]/60 h-10 w-full rounded-2xl bg-[--input-bg] indent-3 text-black focus:outline-none focus:ring-1 focus:ring-black/80 focus:placeholder:text-white/0'
         />
       </Form>
 
