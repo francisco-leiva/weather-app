@@ -1,4 +1,9 @@
-export default function HourlyForecast({ forecast }) {
+import { useContext } from 'react';
+import { WeatherContext } from '../context/weatherContext';
+
+export default function HourlyForecast() {
+  const { forecast } = useContext(WeatherContext);
+
   const todaysHours = forecast[0].hour;
   const tomorrowsHours = forecast[1].hour;
   const currHour = new Date().getHours();

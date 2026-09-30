@@ -1,15 +1,19 @@
+import { useContext } from 'react';
+import { WeatherContext } from '../context/weatherContext';
 import { DropOfWater } from './Icons';
 
-export default function DailyForecast({ forecast }) {
-  const weekdays = [
-    'Sunday',
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday',
-  ];
+const weekdays = [
+  'Sunday',
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
+];
+
+export default function DailyForecast() {
+  const { forecast } = useContext(WeatherContext);
 
   return (
     <section className='mx-auto my-4 flex max-w-[46rem] flex-col gap-3 rounded-2xl bg-[--bg-sections] p-4 text-lg sm:text-2xl'>

@@ -1,25 +1,29 @@
+import { useContext } from 'react';
+import { WeatherContext } from '../context/weatherContext';
 import UVIndexIcon from '../assets/uv-index.png';
 import HumidityIcon from '../assets/humidity.png';
 import WindIcon from '../assets/wind.png';
 
-export default function OtherMeteorologicalData({ currentWeather }) {
+const UVIndexCalculate = (number) => {
+  const risk = ['Low', 'Moderate', 'High', 'Very high', 'Extremely high'];
+
+  if (number <= 2) return risk[0];
+
+  if (number <= 5) return risk[1];
+
+  if (number <= 7) return risk[2];
+
+  if (number <= 10) return risk[3];
+
+  if (number >= 11) return risk[4];
+};
+
+export default function OtherMeteorologicalData() {
+  const { currentWeather } = useContext(WeatherContext);
   const { uv, humidity, wind_kph } = currentWeather;
+
   const wind = `${Math.round(wind_kph)} km/h`;
   const humidityText = humidity + '%';
-
-  const UVIndexCalculate = (number) => {
-    const risk = ['Low', 'Moderate', 'High', 'Very high', 'Extremely high'];
-
-    if (number <= 2) return risk[0];
-
-    if (number <= 5) return risk[1];
-
-    if (number <= 7) return risk[2];
-
-    if (number <= 10) return risk[3];
-
-    if (number >= 11) return risk[4];
-  };
 
   const uvIndex = UVIndexCalculate(uv);
 

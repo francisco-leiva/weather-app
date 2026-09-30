@@ -1,7 +1,11 @@
+import { useContext } from 'react';
+import { WeatherContext } from '../context/weatherContext';
 import sunriseImg from '../assets/sunrise.png';
 import sunsetImg from '../assets/sunset.png';
 
-export default function SunriseAndSunset({ forecast }) {
+export default function SunriseAndSunset() {
+  const { forecast } = useContext(WeatherContext);
+
   const {
     date,
     astro: { sunrise, sunset },

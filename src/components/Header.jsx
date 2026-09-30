@@ -1,7 +1,11 @@
+import { useContext } from 'react';
+import { WeatherContext } from '../context/weatherContext';
 import { Form } from 'react-router-dom';
 import { MapPin } from './Icons';
 
-export default function Header({ currentWeather, city, forecast }) {
+export default function Header() {
+  const { currentWeather, city, forecast } = useContext(WeatherContext);
+
   const imgSrc = currentWeather.condition.icon;
   const imgAlt = currentWeather.condition.text;
 

@@ -9,8 +9,7 @@ import OtherMeteorologicalData from './components/OtherMeteorologicalData';
 import Footer from './components/Footer';
 
 export default function App() {
-  const { loading, currentWeather, city, forecast, theme } =
-    useContext(WeatherContext);
+  const { loading, theme } = useContext(WeatherContext);
 
   if (loading) return <Loading />;
 
@@ -19,15 +18,15 @@ export default function App() {
       data-theme={theme}
       className='font-poppins bg-[--bg-main] px-2 text-[--text-color] md:px-0'
     >
-      <Header currentWeather={currentWeather} city={city} forecast={forecast} />
+      <Header />
 
-      <HourlyForecast forecast={forecast} />
+      <HourlyForecast />
 
-      <DailyForecast forecast={forecast} />
+      <DailyForecast />
 
-      <SunriseAndSunset forecast={forecast} />
+      <SunriseAndSunset />
 
-      <OtherMeteorologicalData currentWeather={currentWeather} />
+      <OtherMeteorologicalData />
 
       <Footer />
     </main>
