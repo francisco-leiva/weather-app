@@ -7,6 +7,7 @@ main[data-theme='sunny'] {
   --bg-main: #7cb2f2;
   --bg-sections: #90bef0;
   --text-color: #000000;
+  --input-bg: #ffffff;
   --input-placeholder: 0 0 0;
 }
 
@@ -14,6 +15,7 @@ main[data-theme='cloudy'] {
   --bg-main: #8c8fde;
   --bg-sections: #b8b5ff;
   --text-color: #000000;
+  --input-bg: #ffffff;
   --input-placeholder: 0 0 0;
 }
 
@@ -21,6 +23,7 @@ main[data-theme='rainy'] {
   --bg-main: #58afc2;
   --bg-sections: #87b7c5;
   --text-color: #000000;
+  --input-bg: #ffffff;
   --input-placeholder: 0 0 0;
 }
 
@@ -28,6 +31,7 @@ main[data-theme='snowy'] {
   --bg-main: #3d4470;
   --bg-sections: #626689;
   --text-color: #ffffff;
+  --input-bg: #ffffff;
   --input-placeholder: 255 255 255;
 }
 
@@ -35,6 +39,7 @@ main[data-theme='night'] {
   --bg-main: #505366;
   --bg-sections: #6c6e7b;
   --text-color: #ffffff;
+  --input-bg: #ffffff;
   --input-placeholder: 255 255 255;
 }
 
