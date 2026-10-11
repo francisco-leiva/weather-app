@@ -1,4 +1,4 @@
-const API_KEY = '27108248a8404184a5222207233103';
+const API_KEY = import.meta.env.WEATHER_API_KEY || import.meta.env.VITE_WEATHER_API_KEY
 
 export async function fetchWeather(query) {
   try {
@@ -14,6 +14,7 @@ export async function fetchWeather(query) {
     );
 
     if (!response.ok) {
+      console.log("API not responding");
       throw new Error(response.status);
     }
 
