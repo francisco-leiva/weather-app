@@ -1,6 +1,10 @@
+import { setWeatherTheme } from "../functions/setWeatherTheme";
+import { setLoading, setTheme, setWeather } from "../store/weatherStore";
+
 const API_KEY = import.meta.env.WEATHER_API_KEY || import.meta.env.VITE_WEATHER_API_KEY
 
 export async function fetchWeather(query) {
+  setLoading(true);
   try {
     const params = new URLSearchParams({
       key: API_KEY,
@@ -23,11 +27,16 @@ export async function fetchWeather(query) {
       currentWeather: data.current,
       city: data.location.name,
       forecast: data.forecast.forecastday,
-      conditionCode: data.current.condition.code,
-      isDay: data.current.is_day,
     };
 
-    return weather;
+    const conditionCode = data.current.condition.code
+    const isDay = data.current.is_day
+
+    const theme = setWeatherTheme(conditionCode, isDay)
+
+    setWeather(weather)
+    setTheme(theme)
+    setLoading(false)
   } catch (err) {
     console.error(
       'No se pudo encontrar la ubicación, estado de respuesta:',
