@@ -1,6 +1,5 @@
-import { useContext } from 'react';
-import { WeatherContext } from '../context/weatherContext';
 import { DropOfWater } from './Icons';
+import { useWeatherStore } from '../store/weatherStore';
 
 const weekdays = [
   'Sunday',
@@ -13,7 +12,7 @@ const weekdays = [
 ];
 
 export default function DailyForecast() {
-  const { forecast } = useContext(WeatherContext);
+  const { forecast } = useWeatherStore(s => s.weather);
 
   return (
     <section className='mx-auto my-4 flex max-w-[46rem] flex-col gap-3 rounded-2xl bg-[--bg-sections] p-4 text-lg sm:text-2xl'>

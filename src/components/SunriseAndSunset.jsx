@@ -1,10 +1,9 @@
-import { useContext } from 'react';
-import { WeatherContext } from '../context/weatherContext';
 import sunriseImg from '../assets/sunrise.png';
 import sunsetImg from '../assets/sunset.png';
+import { useWeatherStore } from '../store/weatherStore';
 
 export default function SunriseAndSunset() {
-  const { forecast } = useContext(WeatherContext);
+  const { forecast } = useWeatherStore(s => s.weather);
 
   const {
     date,

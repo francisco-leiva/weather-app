@@ -1,8 +1,7 @@
-import { useContext } from 'react';
-import { WeatherContext } from '../context/weatherContext';
+import { useWeatherStore } from '../store/weatherStore';
 
 export default function HourlyForecast() {
-  const { forecast } = useContext(WeatherContext);
+  const { forecast } = useWeatherStore(s => s.weather);
 
   const todaysHours = forecast[0].hour;
   const tomorrowsHours = forecast[1].hour;

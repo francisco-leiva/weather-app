@@ -1,8 +1,7 @@
-import { useContext } from 'react';
-import { WeatherContext } from '../context/weatherContext';
 import UVIndexIcon from '../assets/uv-index.png';
 import HumidityIcon from '../assets/humidity.png';
 import WindIcon from '../assets/wind.png';
+import { useWeatherStore } from '../store/weatherStore';
 
 const UVIndexCalculate = (number) => {
   const risk = ['Low', 'Moderate', 'High', 'Very high', 'Extremely high'];
@@ -19,7 +18,7 @@ const UVIndexCalculate = (number) => {
 };
 
 export default function OtherMeteorologicalData() {
-  const { currentWeather } = useContext(WeatherContext);
+  const { currentWeather } = useWeatherStore(s => s.weather);
   const { uv, humidity, wind_kph } = currentWeather;
 
   const wind = `${Math.round(wind_kph)} km/h`;
