@@ -1,10 +1,10 @@
 import { setWeatherTheme } from "../functions/setWeatherTheme";
 import { setLoading, setTheme, setWeather } from "../store/weatherStore";
 
-const apiKey = import.meta.env.VITE_WEATHER_API_KEY || process.env.WEATHER_API_KEY
-
 export async function fetchWeather(query) {
+  const apiKey = import.meta.env.VITE_WEATHER_API_KEY
   setLoading(true);
+
   try {
     const params = new URLSearchParams({
       key: apiKey,
