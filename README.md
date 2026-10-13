@@ -10,17 +10,15 @@ Real time Weather App. Depending on the type of weather, the app changes color.
 
 ### Built with
 
-- React Hooks
-
-- [WeatherAPI](https://www.weatherapi.com/)
-
-## Frameworks and libraries
-
 - [React](https://react.dev/)
 
 - [Vite](https://vitejs.dev/)
 
-- [Material UI](https://mui.com/)
+- [WeatherAPI](https://www.weatherapi.com/)
+
+- [Tailwind](https://tailwindcss.com/)
+
+- [React Router](https://reactrouter.com/)
 
 ## About me
 
